@@ -1,5 +1,7 @@
 <?php
 
+use Javaabu\Stencil\Http\Controllers\EvaluateController;
+
 return [
 
     /*
@@ -28,6 +30,9 @@ return [
 
     'live' => [
         'route' => 'stencil.evaluate',
+
+        // The controller Route::stencil() registers. Extend EvaluateController to change it.
+        'controller' => EvaluateController::class,
 
         // Milliseconds to wait after typing stops before a live text field updates the form.
         'debounce' => 500,
