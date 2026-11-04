@@ -1,683 +1,531 @@
 <form
-  method="POST"
-  data-focus-on-error
-  id="kitchen-sink-form"
-  action="/kitchen-sink"
-  class="stencil-form"
-  data-stencil="edit"
-  data-stencil-live='{"url":"\/stencil\/evaluate","token":"test-token","debounce":500}'
+    method="POST"
+    
+            data-focus-on-error
+    
+    id="kitchen-sink-form" action="/kitchen-sink" class="stencil-form" data-stencil="edit" data-stencil-live="{&quot;url&quot;:&quot;\/stencil\/evaluate&quot;,&quot;token&quot;:&quot;test-token&quot;,&quot;debounce&quot;:500}"
 >
-  <input type="hidden" name="_token" value="" autocomplete="off" />
+            <input type="hidden" name="_token" value="" autocomplete="off">    
+    
+    
+    <div class="stencil-item" data-stencil-key="section-0" data-stencil-hash="42141ecb85e7"><div
+    class="ring-border bg-card text-card-foreground gap-(--card-spacing) overflow-hidden rounded-xl py-(--card-spacing) text-sm ring-1 [--card-spacing:--spacing(4)] has-data-[slot=card-footer]:pb-0 has-[&gt;img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(3)] data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl group/card flex flex-col stencil-section mb-4"
+    data-slot="card"
+>
+    
 
-  <div class="stencil-item" data-stencil-key="section-0" data-stencil-hash="42141ecb85e7">
-    <div
-      class="ring-border bg-card text-card-foreground gap-(--card-spacing) overflow-hidden rounded-xl py-(--card-spacing) text-sm ring-1 [--card-spacing:--spacing(4)] has-data-[slot=card-footer]:pb-0 has-[&gt;img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(3)] data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl group/card flex flex-col stencil-section mb-4"
-      data-slot="card"
-    >
-      <div
-        class="gap-1 rounded-t-xl px-(--card-spacing) [.border-b]:pb-(--card-spacing) group/card-header @container/card-header grid auto-rows-min items-start has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]"
-        data-slot="card-header"
-      >
-        <div class="text-base leading-snug font-semibold group-data-[size=sm]/card:text-sm" data-slot="card-title">
-          ތަފްޞީލް
-        </div>
-
-        <div class="text-muted-foreground text-sm" data-slot="card-description">ކުންފުނީގެ މަޢުލޫމާތު</div>
-      </div>
-
-      <div class="px-(--card-spacing)" data-slot="card-content">
-        <div class="stencil-grid" style="--stencil-cols: 1; --stencil-cols-md: 2">
-          <div
-            class="stencil-item"
-            data-stencil-key="title"
-            data-stencil-hash="bfea17cd9358"
-            data-stencil-live='{"debounce":null,"onBlur":false}'
-          >
-            <div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
-              <div class="gap-2 grid">
-                <div class="gap-2 flex items-center justify-between">
-                  <label
-                    class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed"
-                    for="title"
-                    data-slot="label"
-                  >
+        <div class="gap-1 rounded-t-xl px-(--card-spacing) [.border-b]:pb-(--card-spacing) group/card-header @container/card-header grid auto-rows-min items-start has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]" data-slot="card-header">
+    <div class="text-base leading-snug font-semibold group-data-[size=sm]/card:text-sm" data-slot="card-title">
+    ތަފްޞީލް
+</div>
+        
+                    <div class="text-muted-foreground text-sm" data-slot="card-description">
+    ކުންފުނީގެ މަޢުލޫމާތު
+</div>
+</div>
+    
+    <div class="px-(--card-spacing)" data-slot="card-content">
+        <div class="stencil-grid" style="--stencil-cols: 1; --stencil-cols-md: 2"><div class="stencil-item" data-stencil-key="title" data-stencil-hash="bfea17cd9358" data-stencil-live="{&quot;debounce&quot;:null,&quot;onBlur&quot;:false}"><div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
+    <div class="gap-2 grid">
+                    <div class="gap-2 flex items-center justify-between ">
+                <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed" for="title" data-slot="label">
                     ސުރުހީ
-                    <span class="required text-destructive" data-slot="required-marker" aria-hidden="true">*</span>
-                  </label>
-                </div>
-                <div class="min-w-0 gap-1.5 grid">
-                  <input
-                    class="border-input hover:border-primary-5 focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border bg-card px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-2 aria-invalid:ring-3 md:text-sm w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
-                    required="required"
-                    dir="rtl"
-                    lang="dv"
-                    data-thaana=""
-                    data-slot="input"
+            <span class="required text-destructive" data-slot="required-marker" aria-hidden="true">*</span>
+            </label>
+            </div>
+                <div class="min-w-0 gap-1.5 grid ">
+            <input
+                    class="border-input hover:border-primary-5 focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border bg-card px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-2 aria-invalid:ring-3 md:text-sm w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50" required="required" dir="rtl" lang="dv" data-thaana=""
+                                        data-slot="input"
                     type="text"
                     value="ރާއްޖެ"
                     name="title"
-                    id="title"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="stencil-item" data-stencil-key="slug" data-stencil-hash="a74101c97e4f">
-            <div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
-              <div class="gap-2 grid">
-                <div class="gap-2 flex items-center justify-between">
-                  <label
-                    class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed"
-                    for="slug"
-                    data-slot="label"
-                  >
+                                            id="title"
+                                                        />
+        </div>
+    </div>
+</div>
+
+</div><div class="stencil-item" data-stencil-key="slug" data-stencil-hash="a74101c97e4f"><div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
+    <div class="gap-2 grid">
+                    <div class="gap-2 flex items-center justify-between ">
+                <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed" for="slug" data-slot="label">
                     Slug
-                  </label>
-                </div>
-                <div class="min-w-0 gap-1.5 grid">
-                  <input
+                        </label>
+            </div>
+                <div class="min-w-0 gap-1.5 grid ">
+            <input
                     class="border-input hover:border-primary-5 focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border bg-card px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-2 aria-invalid:ring-3 md:text-sm w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
-                    data-slot="input"
+                                        data-slot="input"
                     type="text"
                     value="raajje"
                     name="slug"
-                    id="slug"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="stencil-item"
-            data-stencil-key="type"
-            data-stencil-hash="e0da45368b9c"
-            data-stencil-live='{"debounce":null,"onBlur":false}'
-          >
-            <div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
-              <div class="gap-2 grid">
-                <div class="gap-2 flex items-center justify-between">
-                  <label
-                    class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed"
-                    for="type"
-                    data-slot="label"
-                  >
+                                            id="slug"
+                                                        />
+        </div>
+    </div>
+</div>
+
+</div><div class="stencil-item" data-stencil-key="type" data-stencil-hash="e0da45368b9c" data-stencil-live="{&quot;debounce&quot;:null,&quot;onBlur&quot;:false}"><div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
+    <div class="gap-2 grid">
+                    <div class="gap-2 flex items-center justify-between ">
+                <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed" for="type" data-slot="label">
                     ބާވަތް
-                  </label>
-                </div>
-                <div class="min-w-0 gap-1.5 grid">
-                  <div
-                    class="group/native-select relative w-full has-[select:disabled]:opacity-50"
-                    data-slot="native-select-wrapper"
-                  >
-                    <select
-                      class="border-input hover:border-primary-5 placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 h-8 w-full min-w-0 appearance-none rounded-lg border bg-card py-1 pe-8 ps-2.5 text-sm transition-colors select-none focus-visible:ring-2 aria-invalid:ring-3 data-[size=sm]:h-7 data-[size=sm]:rounded-[min(var(--radius-md),10px)] data-[size=sm]:py-0.5 outline-none disabled:pointer-events-none disabled:cursor-not-allowed"
-                      data-slot="native-select"
-                      name="type"
-                      id="type"
-                    >
-                      <option value="person" class="bg-[Canvas] text-[CanvasText]">ފަރުދެއް</option>
-                      <option value="company" class="bg-[Canvas] text-[CanvasText]" selected="selected">
-                        ކުންފުންޏެއް
-                      </option>
-                    </select>
-                    <svg
-                      class="forms-icon text-muted-foreground top-1/2 end-2.5 size-4 -translate-y-1/2 pointer-events-none absolute select-none"
-                      aria-hidden="true"
-                      focusable="false"
-                      data-slot="native-select-icon"
-                      data-icon-name="chevron-down"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="1em"
-                      height="1em"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="m6 9 6 6 6-6" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
+                        </label>
             </div>
-          </div>
-          <div class="stencil-item" data-stencil-key="company_name" data-stencil-hash="a5b443c93363">
-            <div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
-              <div class="gap-2 grid">
-                <div class="gap-2 flex items-center justify-between">
-                  <label
-                    class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed"
-                    for="company_name"
-                    data-slot="label"
-                  >
+                <div class="min-w-0 gap-1.5 grid ">
+            <div class="group/native-select relative w-full has-[select:disabled]:opacity-50" data-slot="native-select-wrapper">
+
+    <select
+        class="border-input hover:border-primary-5 placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 h-8 w-full min-w-0 appearance-none rounded-lg border bg-card py-1 pe-8 ps-2.5 text-sm transition-colors select-none focus-visible:ring-2 aria-invalid:ring-3 data-[size=sm]:h-7 data-[size=sm]:rounded-[min(var(--radius-md),10px)] data-[size=sm]:py-0.5 outline-none disabled:pointer-events-none disabled:cursor-not-allowed"
+        data-slot="native-select"
+        name="type"
+
+        
+        
+        
+                    id="type"
+            >
+        
+                    <option value="person" class="bg-[Canvas] text-[CanvasText]" >ފަރުދެއް</option>
+                    <option value="company" class="bg-[Canvas] text-[CanvasText]"  selected="selected" >ކުންފުންޏެއް</option>
+            </select>
+                    <svg class="forms-icon text-muted-foreground top-1/2 end-2.5 size-4 -translate-y-1/2 pointer-events-none absolute select-none" aria-hidden="true" focusable="false" data-slot="native-select-icon" data-icon-name="chevron-down" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</div><div class="stencil-item" data-stencil-key="company_name" data-stencil-hash="a5b443c93363"><div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
+    <div class="gap-2 grid">
+                    <div class="gap-2 flex items-center justify-between ">
+                <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed" for="company_name" data-slot="label">
                     ކުންފުނީގެ ނަން
-                  </label>
-                </div>
-                <div class="min-w-0 gap-1.5 grid">
-                  <input
+                        </label>
+            </div>
+                <div class="min-w-0 gap-1.5 grid ">
+            <input
                     class="border-input hover:border-primary-5 focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border bg-card px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-2 aria-invalid:ring-3 md:text-sm w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
-                    data-slot="input"
+                                        data-slot="input"
                     type="text"
                     value=""
                     name="company_name"
-                    id="company_name"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="stencil-item" data-stencil-key="id_card" data-stencil-hash="7abde41ead42">
-            <div data-enable-elem="#type" data-enable-section-value="person" data-hide-fields="true">
-              <div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
-                <div class="gap-2 grid">
-                  <div class="gap-2 flex items-center justify-between">
-                    <label
-                      class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed"
-                      for="id_card"
-                      data-slot="label"
-                    >
-                      އައިޑީ ކާޑު
-                    </label>
-                  </div>
-                  <div class="min-w-0 gap-1.5 grid">
-                    <input
-                      class="border-input hover:border-primary-5 focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border bg-card px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-2 aria-invalid:ring-3 md:text-sm w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
-                      data-slot="input"
-                      type="text"
-                      value=""
-                      name="id_card"
-                      id="id_card"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="stencil-item"
-            data-stencil-key="note"
-            data-stencil-hash="e90a42897333"
-            style="--stencil-span-md: 1 / -1"
-          >
-            <div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
-              <div class="gap-2 grid">
-                <div class="gap-2 flex items-center justify-between">
-                  <label
-                    class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed"
-                    for="note"
-                    data-slot="label"
-                  >
-                    Note
-                  </label>
-                </div>
-                <div class="min-w-0 gap-1.5 grid">
-                  <textarea
-                    class="border-input hover:border-primary-5 focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 rounded-lg border bg-card px-2.5 py-2 text-base transition-colors focus-visible:ring-2 aria-invalid:ring-3 md:text-sm flex field-sizing-content min-h-16 w-full outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
-                    data-slot="textarea"
-                    name="note"
-                    rows="3"
-                    id="note"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
+                                            id="company_name"
+                                                        />
         </div>
-      </div>
     </div>
-  </div>
-  <div class="stencil-item" data-stencil-key="fieldset-1" data-stencil-hash="b8908b689bf6">
-    <fieldset class="stencil-fieldset">
-      <legend class="stencil-legend">ގުޅުން</legend>
+</div>
 
-      <div class="stencil-item" data-stencil-key="subscribe" data-stencil-hash="9240096b70f0">
-        <div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
-          <div class="gap-2 grid">
-            <div class="min-w-0 gap-1.5 grid">
-              <div class="gap-2.5 flex items-start" data-slot="checkbox-field">
-                <span class="flex shrink-0 items-center min-h-5">
-                  <input
-                    class="appearance-none border-input bg-card hover:border-primary checked:bg-primary checked:text-primary-foreground dark:checked:bg-primary checked:border-primary aria-invalid:checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-4 items-center justify-center rounded-[4px] border transition-colors group-has-disabled/field:opacity-50 focus-visible:ring-3 aria-invalid:ring-3 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-checked:border-input group-has-[:focus-visible]/field-label:checked:border-primary peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50 forms-checkbox"
-                    data-slot="checkbox"
-                    id="subscribe"
-                    name="subscribe"
-                    type="checkbox"
-                    value="1"
-                  />
-                </span>
-                <div class="min-w-0 gap-1 grid">
-                  <label
-                    class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed checkbox-label"
-                    for="subscribe"
-                    data-slot="label"
-                  >
-                    ސަބްސްކްރައިބް
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="stencil-item" data-stencil-key="channels" data-stencil-hash="da0d1d7f28bc">
-        <div
-          class="min-w-0 @container/form-field w-full mb-4 stencil-options-field"
-          data-slot="form-field"
-          data-label-layout="stacked"
-        >
-          <div class="gap-2 grid">
-            <div class="gap-2 flex items-center justify-between">
-              <label
-                class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed"
-                for="channels-sms"
-                data-slot="label"
-              >
-                Channels
-              </label>
-            </div>
-            <div class="min-w-0 gap-1.5 grid">
-              <div class="stencil-options stencil-grid" role="group" style="--stencil-cols: 1; --stencil-cols-md: 2">
-                <div class="gap-2.5 flex items-start" data-slot="checkbox-field">
-                  <span class="flex shrink-0 items-center min-h-5">
-                    <input
-                      class="appearance-none border-input bg-card hover:border-primary checked:bg-primary checked:text-primary-foreground dark:checked:bg-primary checked:border-primary aria-invalid:checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-4 items-center justify-center rounded-[4px] border transition-colors group-has-disabled/field:opacity-50 focus-visible:ring-3 aria-invalid:ring-3 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-checked:border-input group-has-[:focus-visible]/field-label:checked:border-primary peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50 forms-checkbox"
-                      data-slot="checkbox"
-                      id="channels-sms"
-                      name="channels[]"
-                      type="checkbox"
-                      value="sms"
-                    />
-                  </span>
-                  <div class="min-w-0 gap-1 grid">
-                    <label
-                      class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed checkbox-label"
-                      for="channels-sms"
-                      data-slot="label"
-                    >
-                      SMS
-                    </label>
-                  </div>
-                </div>
+</div><div class="stencil-item" data-stencil-key="id_card" data-stencil-hash="7abde41ead42"><div
+    
 
-                <div class="gap-2.5 flex items-start" data-slot="checkbox-field">
-                  <span class="flex shrink-0 items-center min-h-5">
-                    <input
-                      class="appearance-none border-input bg-card hover:border-primary checked:bg-primary checked:text-primary-foreground dark:checked:bg-primary checked:border-primary aria-invalid:checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-4 items-center justify-center rounded-[4px] border transition-colors group-has-disabled/field:opacity-50 focus-visible:ring-3 aria-invalid:ring-3 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-checked:border-input group-has-[:focus-visible]/field-label:checked:border-primary peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50 forms-checkbox"
-                      data-slot="checkbox"
-                      id="channels-email"
-                      name="channels[]"
-                      type="checkbox"
-                      value="email"
-                      checked
-                    />
-                  </span>
-                  <div class="min-w-0 gap-1 grid">
-                    <label
-                      class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed checkbox-label"
-                      for="channels-email"
-                      data-slot="label"
-                    >
-                      Email
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="stencil-item" data-stencil-key="size" data-stencil-hash="e6da03cd9f6e">
-        <div
-          class="min-w-0 @container/form-field w-full mb-4 stencil-options-field"
-          data-slot="form-field"
-          data-label-layout="stacked"
-        >
-          <div class="gap-2 grid">
-            <div class="gap-2 flex items-center justify-between">
-              <label
-                class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed"
-                for="size-s"
-                data-slot="label"
-              >
-                Size
-              </label>
-            </div>
-            <div class="min-w-0 gap-1.5 grid">
-              <div class="stencil-options" role="radiogroup">
-                <div class="gap-2.5 flex items-start" data-slot="radio-field">
-                  <span class="flex shrink-0 items-center min-h-5">
-                    <input
-                      class="appearance-none border-input bg-card hover:border-primary checked:bg-primary checked:text-primary-foreground dark:checked:bg-primary checked:border-primary aria-invalid:checked:border-primary aria-invalid:border-destructive focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 dark:aria-invalid:border-destructive/50 flex size-4 rounded-full focus-visible:ring-3 aria-invalid:ring-3 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-checked:border-input group-has-[:focus-visible]/field-label:checked:border-primary group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50 forms-radio"
-                      data-slot="radio"
-                      id="size-s"
-                      name="size"
-                      type="radio"
-                      value="s"
-                    />
-                  </span>
-                  <div class="min-w-0 gap-1 grid">
-                    <label
-                      class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed radio-label"
-                      for="size-s"
-                      data-slot="label"
-                    >
-                      ކުޑަ
-                    </label>
-                  </div>
-                </div>
-
-                <div class="gap-2.5 flex items-start" data-slot="radio-field">
-                  <span class="flex shrink-0 items-center min-h-5">
-                    <input
-                      class="appearance-none border-input bg-card hover:border-primary checked:bg-primary checked:text-primary-foreground dark:checked:bg-primary checked:border-primary aria-invalid:checked:border-primary aria-invalid:border-destructive focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 dark:aria-invalid:border-destructive/50 flex size-4 rounded-full focus-visible:ring-3 aria-invalid:ring-3 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-checked:border-input group-has-[:focus-visible]/field-label:checked:border-primary group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50 forms-radio"
-                      data-slot="radio"
-                      id="size-l"
-                      name="size"
-                      type="radio"
-                      value="l"
-                      checked
-                    />
-                  </span>
-                  <div class="min-w-0 gap-1 grid">
-                    <label
-                      class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed radio-label"
-                      for="size-l"
-                      data-slot="label"
-                    >
-                      ބޮޑު
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </fieldset>
-  </div>
-  <div class="stencil-item" data-stencil-key="tabs-2" data-stencil-hash="f3470f5a747e">
-    <div
-      class="tab-container gap-2 group/tabs flex data-horizontal:flex-col stencil-tabs mb-4"
-      data-slot="tabs"
-      data-orientation="horizontal"
+        data-enable-elem="#type"
+    data-enable-section-value="person"
+    
+        data-hide-fields="true"
+    
     >
-      <div
-        class="rounded-lg p-[3px] group-data-horizontal/tabs:h-8 data-[variant=line]:rounded-none group/tabs-list inline-flex w-fit items-center justify-center text-muted-foreground group-data-vertical/tabs:h-fit group-data-vertical/tabs:flex-col bg-muted"
-        data-slot="tabs-list"
-        data-variant="default"
-        data-orientation="horizontal"
-        role="tablist"
-      >
-        <button
-          type="button"
-          role="tab"
-          id="tab-extra-tab"
-          data-tab-target="#tab-extra"
-          aria-controls="tab-extra"
-          aria-selected="true"
-          data-state="active"
-          data-slot="tabs-trigger"
-          data-orientation="horizontal"
-          tabindex="0"
-          class="gap-1.5 rounded-md border border-transparent px-1.5 py-0.5 text-sm font-medium group-data-[variant=default]/tabs-list:data-active:shadow-sm group-data-[variant=line]/tabs-list:data-active:shadow-none [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 has-data-[icon=inline-end]:pe-1 has-data-[icon=inline-start]:ps-1 relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center whitespace-nowrap text-muted-foreground transition-all group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 dark:text-muted-foreground dark:hover:text-foreground [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 group-data-[variant=line]/tabs-list:flex-none group-data-[variant=line]/tabs-list:rounded-none group-data-[variant=line]/tabs-list:px-0 group-data-[variant=line]/tabs-list:py-3 group-data-[variant=line]/tabs-list:h-auto group-data-[variant=line]/tabs-list:font-normal group-data-[variant=line]/tabs-list:text-foreground dark:group-data-[variant=line]/tabs-list:text-foreground group-data-[variant=line]/tabs-list:hover:text-primary-7 dark:group-data-[variant=line]/tabs-list:hover:text-primary-7 group-data-[variant=line]/tabs-list:data-active:text-primary-7 dark:group-data-[variant=line]/tabs-list:data-active:text-primary-7 group-data-[variant=line]/tabs-list:data-active:[text-shadow:0_0_0.25px_currentColor] group-data-vertical/tabs:group-data-[variant=line]/tabs-list:px-6 group-data-vertical/tabs:group-data-[variant=line]/tabs-list:py-2 group-data-horizontal/tabs:group-data-[variant=line]/tabs-list:after:-bottom-px group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-active:bg-transparent dark:group-data-[variant=line]/tabs-list:data-active:border-transparent dark:group-data-[variant=line]/tabs-list:data-active:bg-transparent data-active:bg-background data-active:text-foreground dark:data-active:border-input dark:data-active:bg-input/30 dark:data-active:text-foreground after:absolute after:bg-primary after:opacity-0 after:transition-opacity group-data-horizontal/tabs:after:inset-x-0 group-data-horizontal/tabs:after:bottom-[-5px] group-data-horizontal/tabs:after:h-0.5 group-data-vertical/tabs:after:inset-y-0 group-data-vertical/tabs:after:-end-1 group-data-vertical/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-active:after:opacity-100"
-        >
-          Extra
-        </button>
-        <button
-          type="button"
-          role="tab"
-          id="tab-more-tab"
-          data-tab-target="#tab-more"
-          aria-controls="tab-more"
-          aria-selected="false"
-          data-state="inactive"
-          data-slot="tabs-trigger"
-          data-orientation="horizontal"
-          tabindex="-1"
-          class="gap-1.5 rounded-md border border-transparent px-1.5 py-0.5 text-sm font-medium group-data-[variant=default]/tabs-list:data-active:shadow-sm group-data-[variant=line]/tabs-list:data-active:shadow-none [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 has-data-[icon=inline-end]:pe-1 has-data-[icon=inline-start]:ps-1 relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center whitespace-nowrap text-muted-foreground transition-all group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 dark:text-muted-foreground dark:hover:text-foreground [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 group-data-[variant=line]/tabs-list:flex-none group-data-[variant=line]/tabs-list:rounded-none group-data-[variant=line]/tabs-list:px-0 group-data-[variant=line]/tabs-list:py-3 group-data-[variant=line]/tabs-list:h-auto group-data-[variant=line]/tabs-list:font-normal group-data-[variant=line]/tabs-list:text-foreground dark:group-data-[variant=line]/tabs-list:text-foreground group-data-[variant=line]/tabs-list:hover:text-primary-7 dark:group-data-[variant=line]/tabs-list:hover:text-primary-7 group-data-[variant=line]/tabs-list:data-active:text-primary-7 dark:group-data-[variant=line]/tabs-list:data-active:text-primary-7 group-data-[variant=line]/tabs-list:data-active:[text-shadow:0_0_0.25px_currentColor] group-data-vertical/tabs:group-data-[variant=line]/tabs-list:px-6 group-data-vertical/tabs:group-data-[variant=line]/tabs-list:py-2 group-data-horizontal/tabs:group-data-[variant=line]/tabs-list:after:-bottom-px group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-active:bg-transparent dark:group-data-[variant=line]/tabs-list:data-active:border-transparent dark:group-data-[variant=line]/tabs-list:data-active:bg-transparent data-active:bg-background data-active:text-foreground dark:data-active:border-input dark:data-active:bg-input/30 dark:data-active:text-foreground after:absolute after:bg-primary after:opacity-0 after:transition-opacity group-data-horizontal/tabs:after:inset-x-0 group-data-horizontal/tabs:after:bottom-[-5px] group-data-horizontal/tabs:after:h-0.5 group-data-vertical/tabs:after:inset-y-0 group-data-vertical/tabs:after:-end-1 group-data-vertical/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-active:after:opacity-100"
-        >
-          More
-        </button>
-      </div>
-
-      <div
-        class="tab-pane text-sm flex-1 outline-none active"
-        id="tab-extra"
-        role="tabpanel"
-        data-slot="tabs-content"
-        data-state="active"
-        aria-labelledby="tab-extra-tab"
-        tabindex="0"
-      >
-        <div class="stencil-item" data-stencil-key="tab-extra" data-stencil-hash="2978c20f70c3">
-          <div class="stencil-item" data-stencil-key="extra" data-stencil-hash="86b0a1995e7e">
-            <div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
-              <div class="gap-2 grid">
-                <div class="gap-2 flex items-center justify-between">
-                  <label
-                    class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed"
-                    for="extra"
-                    data-slot="label"
-                  >
-                    Extra
-                  </label>
-                </div>
-                <div class="min-w-0 gap-1.5 grid">
-                  <input
+    <div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
+    <div class="gap-2 grid">
+                    <div class="gap-2 flex items-center justify-between ">
+                <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed" for="id_card" data-slot="label">
+                    އައިޑީ ކާޑު
+                        </label>
+            </div>
+                <div class="min-w-0 gap-1.5 grid ">
+            <input
                     class="border-input hover:border-primary-5 focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border bg-card px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-2 aria-invalid:ring-3 md:text-sm w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
-                    data-slot="input"
+                                        data-slot="input"
+                    type="text"
+                    value=""
+                    name="id_card"
+                                            id="id_card"
+                                                        />
+        </div>
+    </div>
+</div>
+</div>
+</div><div class="stencil-item" data-stencil-key="note" data-stencil-hash="e90a42897333" style="--stencil-span-md: 1 / -1"><div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
+    <div class="gap-2 grid">
+                    <div class="gap-2 flex items-center justify-between ">
+                <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed" for="note" data-slot="label">
+                    Note
+                        </label>
+            </div>
+                <div class="min-w-0 gap-1.5 grid ">
+            <textarea
+        class="border-input hover:border-primary-5 focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 rounded-lg border bg-card px-2.5 py-2 text-base transition-colors focus-visible:ring-2 aria-invalid:ring-3 md:text-sm flex field-sizing-content min-h-16 w-full outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+                data-slot="textarea"
+        name="note"
+        rows="3"
+                    id="note"
+                    ></textarea>
+        </div>
+    </div>
+</div>
+
+
+</div></div>
+    </div>
+
+    </div>
+</div><div class="stencil-item" data-stencil-key="fieldset-1" data-stencil-hash="b8908b689bf6"><fieldset class="stencil-fieldset">
+            <legend class="stencil-legend">ގުޅުން</legend>
+    
+    <div class="stencil-item" data-stencil-key="subscribe" data-stencil-hash="9240096b70f0"><div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
+    <div class="gap-2 grid">
+                <div class="min-w-0 gap-1.5 grid ">
+            <div class="gap-2.5 flex items-start" data-slot="checkbox-field">
+        <span class="flex shrink-0 items-center min-h-5">
+            <input
+                class="appearance-none border-input bg-card hover:border-primary checked:bg-primary checked:text-primary-foreground dark:checked:bg-primary checked:border-primary aria-invalid:checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-4 items-center justify-center rounded-[4px] border transition-colors group-has-disabled/field:opacity-50 focus-visible:ring-3 aria-invalid:ring-3 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-checked:border-input group-has-[:focus-visible]/field-label:checked:border-primary peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50 forms-checkbox"
+                data-slot="checkbox"
+                id="subscribe"
+                name="subscribe"
+                type="checkbox"
+                value="1"
+                                            >
+        </span>
+        <div class="min-w-0 gap-1 grid">
+            <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed checkbox-label" for="subscribe" data-slot="label">
+                    ސަބްސްކްރައިބް
+                        </label>
+                    </div>
+    </div>
+        </div>
+    </div>
+</div>
+
+</div><div class="stencil-item" data-stencil-key="channels" data-stencil-hash="da0d1d7f28bc"><div class="min-w-0 @container/form-field w-full mb-4 stencil-options-field" data-slot="form-field" data-label-layout="stacked">
+    <div class="gap-2 grid">
+                    <div class="gap-2 flex items-center justify-between ">
+                <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed" for="channels-sms" data-slot="label">
+                    Channels
+                        </label>
+            </div>
+                <div class="min-w-0 gap-1.5 grid ">
+            <div
+        class="stencil-options  stencil-grid "
+        role="group"
+         style="--stencil-cols: 1; --stencil-cols-md: 2"     >
+                    <div class="gap-2.5 flex items-start" data-slot="checkbox-field">
+        <span class="flex shrink-0 items-center min-h-5">
+            <input
+                class="appearance-none border-input bg-card hover:border-primary checked:bg-primary checked:text-primary-foreground dark:checked:bg-primary checked:border-primary aria-invalid:checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-4 items-center justify-center rounded-[4px] border transition-colors group-has-disabled/field:opacity-50 focus-visible:ring-3 aria-invalid:ring-3 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-checked:border-input group-has-[:focus-visible]/field-label:checked:border-primary peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50 forms-checkbox"
+                data-slot="checkbox"
+                id="channels-sms"
+                name="channels[]"
+                type="checkbox"
+                value="sms"
+                                            >
+        </span>
+        <div class="min-w-0 gap-1 grid">
+            <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed checkbox-label" for="channels-sms" data-slot="label">
+                    SMS
+                        </label>
+                    </div>
+    </div>
+
+                    <div class="gap-2.5 flex items-start" data-slot="checkbox-field">
+        <span class="flex shrink-0 items-center min-h-5">
+            <input
+                class="appearance-none border-input bg-card hover:border-primary checked:bg-primary checked:text-primary-foreground dark:checked:bg-primary checked:border-primary aria-invalid:checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-4 items-center justify-center rounded-[4px] border transition-colors group-has-disabled/field:opacity-50 focus-visible:ring-3 aria-invalid:ring-3 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-checked:border-input group-has-[:focus-visible]/field-label:checked:border-primary peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50 forms-checkbox"
+                data-slot="checkbox"
+                id="channels-email"
+                name="channels[]"
+                type="checkbox"
+                value="email"
+                                checked            >
+        </span>
+        <div class="min-w-0 gap-1 grid">
+            <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed checkbox-label" for="channels-email" data-slot="label">
+                    Email
+                        </label>
+                    </div>
+    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div><div class="stencil-item" data-stencil-key="size" data-stencil-hash="e6da03cd9f6e"><div class="min-w-0 @container/form-field w-full mb-4 stencil-options-field" data-slot="form-field" data-label-layout="stacked">
+    <div class="gap-2 grid">
+                    <div class="gap-2 flex items-center justify-between ">
+                <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed" for="size-s" data-slot="label">
+                    Size
+                        </label>
+            </div>
+                <div class="min-w-0 gap-1.5 grid ">
+            <div
+        class="stencil-options "
+        role="radiogroup"
+            >
+                    <div class="gap-2.5 flex items-start" data-slot="radio-field">
+        <span class="flex shrink-0 items-center min-h-5">
+            <input
+                class="appearance-none border-input bg-card hover:border-primary checked:bg-primary checked:text-primary-foreground dark:checked:bg-primary checked:border-primary aria-invalid:checked:border-primary aria-invalid:border-destructive focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 dark:aria-invalid:border-destructive/50 flex size-4 rounded-full focus-visible:ring-3 aria-invalid:ring-3 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-checked:border-input group-has-[:focus-visible]/field-label:checked:border-primary group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50 forms-radio"
+                data-slot="radio"
+                id="size-s"
+                name="size"
+                type="radio"
+                value="s"
+                                            >
+        </span>
+        <div class="min-w-0 gap-1 grid">
+            <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed radio-label" for="size-s" data-slot="label">
+                    ކުޑަ
+                        </label>
+                    </div>
+    </div>
+
+                    <div class="gap-2.5 flex items-start" data-slot="radio-field">
+        <span class="flex shrink-0 items-center min-h-5">
+            <input
+                class="appearance-none border-input bg-card hover:border-primary checked:bg-primary checked:text-primary-foreground dark:checked:bg-primary checked:border-primary aria-invalid:checked:border-primary aria-invalid:border-destructive focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 dark:aria-invalid:border-destructive/50 flex size-4 rounded-full focus-visible:ring-3 aria-invalid:ring-3 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-checked:border-input group-has-[:focus-visible]/field-label:checked:border-primary group/radio-group-item peer relative aspect-square shrink-0 border outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50 forms-radio"
+                data-slot="radio"
+                id="size-l"
+                name="size"
+                type="radio"
+                value="l"
+                                checked            >
+        </span>
+        <div class="min-w-0 gap-1 grid">
+            <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed radio-label" for="size-l" data-slot="label">
+                    ބޮޑު
+                        </label>
+                    </div>
+    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</fieldset>
+</div><div class="stencil-item" data-stencil-key="tabs-2" data-stencil-hash="f3470f5a747e"><div class="tab-container gap-2 group/tabs flex data-horizontal:flex-col stencil-tabs mb-4" data-slot="tabs" data-orientation="horizontal">
+    <div class="rounded-lg p-[3px] group-data-horizontal/tabs:h-8 data-[variant=line]:rounded-none group/tabs-list inline-flex w-fit items-center justify-center text-muted-foreground group-data-vertical/tabs:h-fit group-data-vertical/tabs:flex-col bg-muted" data-slot="tabs-list" data-variant="default" data-orientation="horizontal" role="tablist">
+                    <button
+        type="button"
+        role="tab"
+        id="tab-extra-tab"
+        data-tab-target="#tab-extra"
+        aria-controls="tab-extra"
+        aria-selected="true"
+        data-state="active"
+        data-slot="tabs-trigger"
+        data-orientation="horizontal"
+        tabindex="0"
+        class="gap-1.5 rounded-md border border-transparent px-1.5 py-0.5 text-sm font-medium group-data-[variant=default]/tabs-list:data-active:shadow-sm group-data-[variant=line]/tabs-list:data-active:shadow-none [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 has-data-[icon=inline-end]:pe-1 has-data-[icon=inline-start]:ps-1 relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center whitespace-nowrap text-muted-foreground transition-all group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 dark:text-muted-foreground dark:hover:text-foreground [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 group-data-[variant=line]/tabs-list:flex-none group-data-[variant=line]/tabs-list:rounded-none group-data-[variant=line]/tabs-list:px-0 group-data-[variant=line]/tabs-list:py-3 group-data-[variant=line]/tabs-list:h-auto group-data-[variant=line]/tabs-list:font-normal group-data-[variant=line]/tabs-list:text-foreground dark:group-data-[variant=line]/tabs-list:text-foreground group-data-[variant=line]/tabs-list:hover:text-primary-7 dark:group-data-[variant=line]/tabs-list:hover:text-primary-7 group-data-[variant=line]/tabs-list:data-active:text-primary-7 dark:group-data-[variant=line]/tabs-list:data-active:text-primary-7 group-data-[variant=line]/tabs-list:data-active:[text-shadow:0_0_0.25px_currentColor] group-data-vertical/tabs:group-data-[variant=line]/tabs-list:px-6 group-data-vertical/tabs:group-data-[variant=line]/tabs-list:py-2 group-data-horizontal/tabs:group-data-[variant=line]/tabs-list:after:-bottom-px group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-active:bg-transparent dark:group-data-[variant=line]/tabs-list:data-active:border-transparent dark:group-data-[variant=line]/tabs-list:data-active:bg-transparent data-active:bg-background data-active:text-foreground dark:data-active:border-input dark:data-active:bg-input/30 dark:data-active:text-foreground after:absolute after:bg-primary after:opacity-0 after:transition-opacity group-data-horizontal/tabs:after:inset-x-0 group-data-horizontal/tabs:after:bottom-[-5px] group-data-horizontal/tabs:after:h-0.5 group-data-vertical/tabs:after:inset-y-0 group-data-vertical/tabs:after:-end-1 group-data-vertical/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-active:after:opacity-100"
+            >Extra</button>
+                    <button
+        type="button"
+        role="tab"
+        id="tab-more-tab"
+        data-tab-target="#tab-more"
+        aria-controls="tab-more"
+        aria-selected="false"
+        data-state="inactive"
+        data-slot="tabs-trigger"
+        data-orientation="horizontal"
+        tabindex="-1"
+        class="gap-1.5 rounded-md border border-transparent px-1.5 py-0.5 text-sm font-medium group-data-[variant=default]/tabs-list:data-active:shadow-sm group-data-[variant=line]/tabs-list:data-active:shadow-none [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 has-data-[icon=inline-end]:pe-1 has-data-[icon=inline-start]:ps-1 relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center whitespace-nowrap text-muted-foreground transition-all group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 dark:text-muted-foreground dark:hover:text-foreground [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 group-data-[variant=line]/tabs-list:flex-none group-data-[variant=line]/tabs-list:rounded-none group-data-[variant=line]/tabs-list:px-0 group-data-[variant=line]/tabs-list:py-3 group-data-[variant=line]/tabs-list:h-auto group-data-[variant=line]/tabs-list:font-normal group-data-[variant=line]/tabs-list:text-foreground dark:group-data-[variant=line]/tabs-list:text-foreground group-data-[variant=line]/tabs-list:hover:text-primary-7 dark:group-data-[variant=line]/tabs-list:hover:text-primary-7 group-data-[variant=line]/tabs-list:data-active:text-primary-7 dark:group-data-[variant=line]/tabs-list:data-active:text-primary-7 group-data-[variant=line]/tabs-list:data-active:[text-shadow:0_0_0.25px_currentColor] group-data-vertical/tabs:group-data-[variant=line]/tabs-list:px-6 group-data-vertical/tabs:group-data-[variant=line]/tabs-list:py-2 group-data-horizontal/tabs:group-data-[variant=line]/tabs-list:after:-bottom-px group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-active:bg-transparent dark:group-data-[variant=line]/tabs-list:data-active:border-transparent dark:group-data-[variant=line]/tabs-list:data-active:bg-transparent data-active:bg-background data-active:text-foreground dark:data-active:border-input dark:data-active:bg-input/30 dark:data-active:text-foreground after:absolute after:bg-primary after:opacity-0 after:transition-opacity group-data-horizontal/tabs:after:inset-x-0 group-data-horizontal/tabs:after:bottom-[-5px] group-data-horizontal/tabs:after:h-0.5 group-data-vertical/tabs:after:inset-y-0 group-data-vertical/tabs:after:-end-1 group-data-vertical/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-active:after:opacity-100"
+            >More</button>
+            </div>
+
+                    <div class="tab-pane text-sm flex-1 outline-none active"
+    id="tab-extra"
+    role="tabpanel"
+    data-slot="tabs-content"
+    data-state="active"
+    aria-labelledby="tab-extra-tab"
+    tabindex="0"
+><div class="stencil-item" data-stencil-key="tab-extra" data-stencil-hash="2978c20f70c3"><div class="stencil-item" data-stencil-key="extra" data-stencil-hash="86b0a1995e7e"><div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
+    <div class="gap-2 grid">
+                    <div class="gap-2 flex items-center justify-between ">
+                <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed" for="extra" data-slot="label">
+                    Extra
+                        </label>
+            </div>
+                <div class="min-w-0 gap-1.5 grid ">
+            <input
+                    class="border-input hover:border-primary-5 focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border bg-card px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-2 aria-invalid:ring-3 md:text-sm w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
+                                        data-slot="input"
                     type="text"
                     value=""
                     name="extra"
-                    id="extra"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+                                            id="extra"
+                                                        />
         </div>
-      </div>
-      <div
-        class="tab-pane text-sm flex-1 outline-none hidden"
-        id="tab-more"
-        role="tabpanel"
-        data-slot="tabs-content"
-        data-state="inactive"
-        aria-labelledby="tab-more-tab"
-        tabindex="0"
-      >
-        <div class="stencil-item" data-stencil-key="tab-more" data-stencil-hash="4267c64b35fc">
-          <div class="stencil-item" data-stencil-key="more" data-stencil-hash="5a441b0fe9ef">
-            <div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
-              <div class="gap-2 grid">
-                <div class="gap-2 flex items-center justify-between">
-                  <label
-                    class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed"
-                    for="more"
-                    data-slot="label"
-                  >
+    </div>
+</div>
+
+</div>
+</div></div>
+                            <div class="tab-pane text-sm flex-1 outline-none hidden"
+    id="tab-more"
+    role="tabpanel"
+    data-slot="tabs-content"
+    data-state="inactive"
+    aria-labelledby="tab-more-tab"
+    tabindex="0"
+><div class="stencil-item" data-stencil-key="tab-more" data-stencil-hash="4267c64b35fc"><div class="stencil-item" data-stencil-key="more" data-stencil-hash="5a441b0fe9ef"><div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
+    <div class="gap-2 grid">
+                    <div class="gap-2 flex items-center justify-between ">
+                <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed" for="more" data-slot="label">
                     More
-                  </label>
-                </div>
-                <div class="min-w-0 gap-1.5 grid">
-                  <input
+                        </label>
+            </div>
+                <div class="min-w-0 gap-1.5 grid ">
+            <input
                     class="border-input hover:border-primary-5 focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border bg-card px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-2 aria-invalid:ring-3 md:text-sm w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
-                    data-slot="input"
+                                        data-slot="input"
                     type="text"
                     value=""
                     name="more"
-                    id="more"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+                                            id="more"
+                                                        />
         </div>
-      </div>
     </div>
-  </div>
-  <div class="stencil-item" data-stencil-key="wizard-3" data-stencil-hash="91d1db5a7cd6">
-    <div class="stencil-wizard mb-4" data-stencil-wizard data-start-step="0">
-      <ol class="stencil-wizard-steps">
-        <li class="stencil-wizard-step" data-stencil-wizard-nav="0" aria-current="step">
-          <span class="stencil-wizard-number">1</span>
-          <span class="stencil-wizard-text">
-            <span class="stencil-wizard-label">އެކައުންޓް</span>
-            <span class="stencil-wizard-description">ފުރަތަމަ</span>
-          </span>
-        </li>
-        <li class="stencil-wizard-step" data-stencil-wizard-nav="1">
-          <span class="stencil-wizard-number">2</span>
-          <span class="stencil-wizard-text">
-            <span class="stencil-wizard-label">ޕްރޮފައިލް</span>
-          </span>
-        </li>
-      </ol>
+</div>
 
-      <div class="stencil-wizard-panel" role="group" aria-label="Step 1 of 2" data-stencil-wizard-panel="0">
-        <div class="stencil-item" data-stencil-key="step-3-0" data-stencil-hash="a12a1601a85d">
-          <div class="stencil-item" data-stencil-key="email" data-stencil-hash="dc74965e11d3">
-            <div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
-              <div class="gap-2 grid">
-                <div class="gap-2 flex items-center justify-between">
-                  <label
-                    class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed"
-                    for="email"
-                    data-slot="label"
-                  >
+</div>
+</div></div>
+            </div>
+</div><div class="stencil-item" data-stencil-key="wizard-3" data-stencil-hash="91d1db5a7cd6"><div class="stencil-wizard mb-4" data-stencil-wizard data-start-step="0">
+    <ol class="stencil-wizard-steps">
+                    <li class="stencil-wizard-step" data-stencil-wizard-nav="0"  aria-current="step" >
+                <span class="stencil-wizard-number">1</span>
+                <span class="stencil-wizard-text">
+                    <span class="stencil-wizard-label">އެކައުންޓް</span>
+                                            <span class="stencil-wizard-description">ފުރަތަމަ</span>
+                                    </span>
+            </li>
+                    <li class="stencil-wizard-step" data-stencil-wizard-nav="1" >
+                <span class="stencil-wizard-number">2</span>
+                <span class="stencil-wizard-text">
+                    <span class="stencil-wizard-label">ޕްރޮފައިލް</span>
+                                    </span>
+            </li>
+            </ol>
+
+            <div
+            class="stencil-wizard-panel"
+            role="group"
+            aria-label="Step 1 of 2"
+            data-stencil-wizard-panel="0"
+                    >
+            <div class="stencil-item" data-stencil-key="step-3-0" data-stencil-hash="a12a1601a85d"><div class="stencil-item" data-stencil-key="email" data-stencil-hash="dc74965e11d3"><div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
+    <div class="gap-2 grid">
+                    <div class="gap-2 flex items-center justify-between ">
+                <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed" for="email" data-slot="label">
                     Email
-                    <span class="required text-destructive" data-slot="required-marker" aria-hidden="true">*</span>
-                  </label>
-                </div>
-                <div class="min-w-0 gap-1.5 grid">
-                  <input
-                    class="border-input hover:border-primary-5 focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border bg-card px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-2 aria-invalid:ring-3 md:text-sm w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
-                    required="required"
-                    data-slot="input"
+            <span class="required text-destructive" data-slot="required-marker" aria-hidden="true">*</span>
+            </label>
+            </div>
+                <div class="min-w-0 gap-1.5 grid ">
+            <input
+                    class="border-input hover:border-primary-5 focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border bg-card px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-2 aria-invalid:ring-3 md:text-sm w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50" required="required"
+                                        data-slot="input"
                     type="email"
                     value=""
                     name="email"
-                    id="email"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+                                            id="email"
+                                                        />
         </div>
-      </div>
-      <div class="stencil-wizard-panel" role="group" aria-label="Step 2 of 2" data-stencil-wizard-panel="1" hidden>
-        <div class="stencil-item" data-stencil-key="step-3-1" data-stencil-hash="70b663b51aec">
-          <div class="stencil-item" data-stencil-key="name" data-stencil-hash="e82b1ca3db42">
-            <div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
-              <div class="gap-2 grid">
-                <div class="gap-2 flex items-center justify-between">
-                  <label
-                    class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed"
-                    for="name"
-                    data-slot="label"
-                  >
+    </div>
+</div>
+
+</div>
+</div>
+        </div>
+            <div
+            class="stencil-wizard-panel"
+            role="group"
+            aria-label="Step 2 of 2"
+            data-stencil-wizard-panel="1"
+             hidden         >
+            <div class="stencil-item" data-stencil-key="step-3-1" data-stencil-hash="70b663b51aec"><div class="stencil-item" data-stencil-key="name" data-stencil-hash="e82b1ca3db42"><div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
+    <div class="gap-2 grid">
+                    <div class="gap-2 flex items-center justify-between ">
+                <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed" for="name" data-slot="label">
                     Name
-                  </label>
-                </div>
-                <div class="min-w-0 gap-1.5 grid">
-                  <input
+                        </label>
+            </div>
+                <div class="min-w-0 gap-1.5 grid ">
+            <input
                     class="border-input hover:border-primary-5 focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border bg-card px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-2 aria-invalid:ring-3 md:text-sm w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
-                    data-slot="input"
+                                        data-slot="input"
                     type="text"
                     value=""
                     name="name"
-                    id="name"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+                                            id="name"
+                                                        />
         </div>
-      </div>
-
-      <div class="stencil-wizard-actions">
-        <button
-          class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-lg border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 border-input bg-card text-foreground hover:border-primary-5 hover:text-primary-7 active:border-primary-7 active:text-primary-7 aria-expanded:border-primary-5 aria-expanded:text-primary-7 h-8 gap-2 px-3.75"
-          data-stencil-wizard-previous="data-stencil-wizard-previous"
-          hidden="hidden"
-          data-slot="button"
-          data-variant="outline"
-          data-size="default"
-          type="button"
-        >
-          Back
-        </button>
-
-        <button
-          class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-lg border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-active aria-expanded:bg-primary-hover h-8 gap-2 px-3.75"
-          data-stencil-wizard-next="data-stencil-wizard-next"
-          data-slot="button"
-          data-variant="default"
-          data-size="default"
-          type="button"
-        >
-          Next
-        </button>
-      </div>
     </div>
-  </div>
-  <div class="stencil-item" data-stencil-key="alert-4" data-stencil-hash="34446f7c85ba">
-    <div
-      class="alert gap-0.5 px-2.5 py-2 text-sm has-data-[slot=alert-action]:pe-18 has-[&gt;svg]:gap-x-2 *:[svg]:translate-y-0.5 *:[svg:not([class*=&#039;size-&#039;])]:size-4 group/alert relative grid w-full rounded-lg border text-start has-data-[slot=alert-action]:relative has-[&gt;svg]:grid-cols-[auto_1fr] *:[svg]:row-span-2 border-warning/40 bg-warning/10 text-foreground *:[svg]:text-warning pe-10"
-      data-slot="callout"
-      data-tone="warning"
-      role="alert"
-    >
-      <div
-        class="text-sm md:text-pretty [&amp;_p:not(:last-child)]:mb-4 text-muted-foreground [&amp;_a]:underline [&amp;_a]:underline-offset-3 [&amp;_a]:hover:text-foreground text-pretty"
-        data-slot="alert-description"
-      >
-        ސަމާލުކަމަށް
-      </div>
-    </div>
-  </div>
-  <div class="stencil-item" data-stencil-key="entry-title" data-stencil-hash="3137e9bb0f9b">
-    <dl class="text-sm grid divide-y divide-y-0" data-slot="description-list" data-layout="stacked">
-      <div class="gap-x-4 gap-y-1 py-3 grid" data-slot="description-list-item">
-        <dt class="font-medium text-muted-foreground" data-slot="description-list-label">ސުރުހީ (ބަލާލުމަށް)</dt>
+</div>
 
-        <dd class="gap-2 min-w-0 flex items-start break-words text-foreground" data-slot="description-list-value">
-          <div class="min-w-0 flex-1">ރާއްޖެ</div>
-        </dd>
-      </div>
-    </dl>
-  </div>
-
-  <div class="stencil-submit" data-stencil-submit>
-    <button
-      class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-lg border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-active aria-expanded:bg-primary-hover h-8 gap-2 px-3.75 animate-submit"
-      data-slot="button"
-      data-variant="default"
-      data-size="default"
-      type="submit"
-    >
-      <svg
-        class="forms-icon forms-spinner animate-spin"
-        aria-hidden="true"
-        focusable="false"
-        hidden="hidden"
-        data-slot="button-spinner"
-        data-icon-name="loader-circle"
-        xmlns="http://www.w3.org/2000/svg"
-        width="1em"
-        height="1em"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-      </svg>
-      Save
+</div>
+</div>
+        </div>
+    
+    <div class="stencil-wizard-actions">
+        <button
+    class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-lg border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 border-input bg-card text-foreground hover:border-primary-5 hover:text-primary-7 active:border-primary-7 active:text-primary-7 aria-expanded:border-primary-5 aria-expanded:text-primary-7 h-8 gap-2 px-3.75" data-stencil-wizard-previous="data-stencil-wizard-previous" hidden="hidden"
+    data-slot="button"
+    data-variant="outline"
+    data-size="default"
+            type="button"
+        >
+            Back
     </button>
-  </div>
+
+        <button
+    class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-lg border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-active aria-expanded:bg-primary-hover h-8 gap-2 px-3.75" data-stencil-wizard-next="data-stencil-wizard-next"
+    data-slot="button"
+    data-variant="default"
+    data-size="default"
+            type="button"
+        >
+            Next
+    </button>
+    </div>
+</div>
+</div><div class="stencil-item" data-stencil-key="alert-4" data-stencil-hash="34446f7c85ba"><div class="alert gap-0.5 px-2.5 py-2 text-sm has-data-[slot=alert-action]:pe-18 has-[&gt;svg]:gap-x-2 *:[svg]:translate-y-0.5 *:[svg:not([class*=&#039;size-&#039;])]:size-4 group/alert relative grid w-full rounded-lg border text-start has-data-[slot=alert-action]:relative has-[&gt;svg]:grid-cols-[auto_1fr] *:[svg]:row-span-2 border-warning/40 bg-warning/10 text-foreground *:[svg]:text-warning pe-10" data-slot="callout" data-tone="warning" role="alert">
+    
+    
+    <div class="text-sm md:text-pretty [&amp;_p:not(:last-child)]:mb-4 text-muted-foreground [&amp;_a]:underline [&amp;_a]:underline-offset-3 [&amp;_a]:hover:text-foreground text-pretty" data-slot="alert-description">
+        ސަމާލުކަމަށް
+    </div>
+
+    </div>
+
+</div><div class="stencil-item" data-stencil-key="entry-title" data-stencil-hash="3137e9bb0f9b"><dl class="text-sm grid divide-y divide-y-0" data-slot="description-list" data-layout="stacked">
+    <div class="gap-x-4 gap-y-1 py-3 grid" data-slot="description-list-item">
+                    <dt class="font-medium text-muted-foreground " data-slot="description-list-label">ސުރުހީ (ބަލާލުމަށް)</dt>
+        
+        <dd class="gap-2 min-w-0 flex items-start break-words text-foreground " data-slot="description-list-value">
+            <div class="min-w-0 flex-1">
+                                                ރާއްޖެ
+                                        </div>
+        </dd>
+    </div>
+</dl>
+
+</div>
+
+                    <div class="stencil-submit" data-stencil-submit>
+                <button
+    class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-lg border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-active aria-expanded:bg-primary-hover h-8 gap-2 px-3.75 animate-submit"
+    data-slot="button"
+    data-variant="default"
+    data-size="default"
+            type="submit"
+        >
+            <svg class="forms-icon forms-spinner animate-spin" aria-hidden="true" focusable="false" hidden="hidden" data-slot="button-spinner" data-icon-name="loader-circle" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+            Save
+    </button>
+            </div>
 </form>
+

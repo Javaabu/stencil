@@ -6,3 +6,4 @@ build
 pnpm-lock.yaml
 *.php
 *.md
+tests/js/fixtures

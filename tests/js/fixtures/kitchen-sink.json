@@ -1,299 +1,303 @@
 {
-  "stencil": 1,
-  "id": "kitchen-sink-form",
-  "action": "/kitchen-sink",
-  "method": "POST",
-  "operation": "edit",
-  "submit": "Save",
-  "state": {
-    "title": "ރާއްޖެ",
-    "slug": null,
-    "type": "person",
-    "company_name": null,
-    "id_card": null,
-    "note": null,
-    "subscribe": true,
-    "channels": ["email"],
-    "size": "l",
-    "extra": null,
-    "more": null,
-    "email": null,
-    "name": null
-  },
-  "live": {
-    "url": "/stencil/evaluate",
-    "token": "test-token",
-    "debounce": 500
-  },
-  "components": [
-    {
-      "type": "section",
-      "key": "section-0",
-      "props": {
-        "heading": "ތަފްޞީލް",
-        "description": "ކުންފުނީގެ މަޢުލޫމާތު",
-        "columns": {
-          "default": 1,
-          "md": 2
-        }
-      },
-      "children": [
+    "stencil": 1,
+    "id": "kitchen-sink-form",
+    "action": "/kitchen-sink",
+    "method": "POST",
+    "operation": "edit",
+    "submit": "Save",
+    "state": {
+        "title": "ރާއްޖެ",
+        "slug": null,
+        "type": "person",
+        "company_name": null,
+        "id_card": null,
+        "note": null,
+        "subscribe": true,
+        "channels": [
+            "email"
+        ],
+        "size": "l",
+        "extra": null,
+        "more": null,
+        "email": null,
+        "name": null
+    },
+    "live": {
+        "url": "/stencil/evaluate",
+        "token": "test-token",
+        "debounce": 500
+    },
+    "components": [
         {
-          "type": "text",
-          "key": "title",
-          "name": "title",
-          "component": "Text",
-          "props": {
-            "label": "ސުރުހީ",
-            "required": true,
-            "thaana": true
-          },
-          "live": {
-            "debounce": null,
-            "onBlur": false
-          }
-        },
-        {
-          "type": "text",
-          "key": "slug",
-          "name": "slug",
-          "component": "Text",
-          "props": {
-            "label": "Slug"
-          }
-        },
-        {
-          "type": "select",
-          "key": "type",
-          "name": "type",
-          "component": "Select",
-          "props": {
-            "label": "ބާވަތް",
-            "options": [
-              {
-                "value": "person",
-                "label": "ފަރުދެއް"
-              },
-              {
-                "value": "company",
-                "label": "ކުންފުންޏެއް"
-              }
+            "type": "section",
+            "key": "section-0",
+            "props": {
+                "heading": "ތަފްޞީލް",
+                "description": "ކުންފުނީގެ މަޢުލޫމާތު",
+                "columns": {
+                    "default": 1,
+                    "md": 2
+                }
+            },
+            "children": [
+                {
+                    "type": "text",
+                    "key": "title",
+                    "name": "title",
+                    "component": "Text",
+                    "props": {
+                        "label": "ސުރުހީ",
+                        "required": true,
+                        "thaana": true
+                    },
+                    "live": {
+                        "debounce": null,
+                        "onBlur": false
+                    }
+                },
+                {
+                    "type": "text",
+                    "key": "slug",
+                    "name": "slug",
+                    "component": "Text",
+                    "props": {
+                        "label": "Slug"
+                    }
+                },
+                {
+                    "type": "select",
+                    "key": "type",
+                    "name": "type",
+                    "component": "Select",
+                    "props": {
+                        "label": "ބާވަތް",
+                        "options": [
+                            {
+                                "value": "person",
+                                "label": "ފަރުދެއް"
+                            },
+                            {
+                                "value": "company",
+                                "label": "ކުންފުންޏެއް"
+                            }
+                        ]
+                    },
+                    "live": {
+                        "debounce": null,
+                        "onBlur": false
+                    }
+                },
+                {
+                    "type": "text",
+                    "key": "company_name",
+                    "name": "company_name",
+                    "hidden": true
+                },
+                {
+                    "type": "text",
+                    "key": "id_card",
+                    "name": "id_card",
+                    "component": "Text",
+                    "props": {
+                        "label": "އައިޑީ ކާޑު"
+                    },
+                    "conditions": [
+                        {
+                            "effect": "visible",
+                            "field": "type",
+                            "selector": "#type",
+                            "values": [
+                                "person"
+                            ],
+                            "checkbox": false
+                        }
+                    ]
+                },
+                {
+                    "type": "textarea",
+                    "key": "note",
+                    "name": "note",
+                    "component": "Textarea",
+                    "props": {
+                        "label": "Note"
+                    },
+                    "span": {
+                        "md": "full"
+                    }
+                }
             ]
-          },
-          "live": {
-            "debounce": null,
-            "onBlur": false
-          }
         },
         {
-          "type": "text",
-          "key": "company_name",
-          "name": "company_name",
-          "hidden": true
-        },
-        {
-          "type": "text",
-          "key": "id_card",
-          "name": "id_card",
-          "component": "Text",
-          "props": {
-            "label": "އައިޑީ ކާޑު"
-          },
-          "conditions": [
-            {
-              "effect": "visible",
-              "field": "type",
-              "selector": "#type",
-              "values": ["person"],
-              "checkbox": false
-            }
-          ]
-        },
-        {
-          "type": "textarea",
-          "key": "note",
-          "name": "note",
-          "component": "Textarea",
-          "props": {
-            "label": "Note"
-          },
-          "span": {
-            "md": "full"
-          }
-        }
-      ]
-    },
-    {
-      "type": "fieldset",
-      "key": "fieldset-1",
-      "props": {
-        "label": "ގުޅުން"
-      },
-      "children": [
-        {
-          "type": "checkbox",
-          "key": "subscribe",
-          "name": "subscribe",
-          "component": "Checkbox",
-          "props": {
-            "label": "ސަބްސްކްރައިބް"
-          }
-        },
-        {
-          "type": "checkbox-list",
-          "key": "channels",
-          "name": "channels[]",
-          "component": "Checkbox",
-          "props": {
-            "label": "Channels",
-            "options": [
-              {
-                "value": "sms",
-                "label": "SMS"
-              },
-              {
-                "value": "email",
-                "label": "Email"
-              }
-            ],
-            "columns": {
-              "default": 1,
-              "md": 2
-            }
-          }
-        },
-        {
-          "type": "radio",
-          "key": "size",
-          "name": "size",
-          "component": "Radio",
-          "props": {
-            "label": "Size",
-            "options": [
-              {
-                "value": "s",
-                "label": "ކުޑަ"
-              },
-              {
-                "value": "l",
-                "label": "ބޮޑު"
-              }
+            "type": "fieldset",
+            "key": "fieldset-1",
+            "props": {
+                "label": "ގުޅުން"
+            },
+            "children": [
+                {
+                    "type": "checkbox",
+                    "key": "subscribe",
+                    "name": "subscribe",
+                    "component": "Checkbox",
+                    "props": {
+                        "label": "ސަބްސްކްރައިބް"
+                    }
+                },
+                {
+                    "type": "checkbox-list",
+                    "key": "channels",
+                    "name": "channels[]",
+                    "component": "Checkbox",
+                    "props": {
+                        "label": "Channels",
+                        "options": [
+                            {
+                                "value": "sms",
+                                "label": "SMS"
+                            },
+                            {
+                                "value": "email",
+                                "label": "Email"
+                            }
+                        ],
+                        "columns": {
+                            "default": 1,
+                            "md": 2
+                        }
+                    }
+                },
+                {
+                    "type": "radio",
+                    "key": "size",
+                    "name": "size",
+                    "component": "Radio",
+                    "props": {
+                        "label": "Size",
+                        "options": [
+                            {
+                                "value": "s",
+                                "label": "ކުޑަ"
+                            },
+                            {
+                                "value": "l",
+                                "label": "ބޮޑު"
+                            }
+                        ]
+                    }
+                }
             ]
-          }
-        }
-      ]
-    },
-    {
-      "type": "tabs",
-      "key": "tabs-2",
-      "props": {
-        "active": "tab-extra"
-      },
-      "children": [
-        {
-          "type": "tab",
-          "key": "tab-extra",
-          "props": {
-            "label": "Extra"
-          },
-          "children": [
-            {
-              "type": "text",
-              "key": "extra",
-              "name": "extra",
-              "component": "Text",
-              "props": {
-                "label": "Extra"
-              }
-            }
-          ]
         },
         {
-          "type": "tab",
-          "key": "tab-more",
-          "props": {
-            "label": "More"
-          },
-          "children": [
-            {
-              "type": "text",
-              "key": "more",
-              "name": "more",
-              "component": "Text",
-              "props": {
-                "label": "More"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "wizard",
-      "key": "wizard-3",
-      "props": {
-        "startStep": 1,
-        "nextLabel": "Next",
-        "previousLabel": "Back",
-        "stepLabel": "Step :current of :total"
-      },
-      "children": [
-        {
-          "type": "step",
-          "key": "step-3-0",
-          "props": {
-            "label": "އެކައުންޓް",
-            "description": "ފުރަތަމަ"
-          },
-          "children": [
-            {
-              "type": "text",
-              "key": "email",
-              "name": "email",
-              "component": "Email",
-              "props": {
-                "label": "Email",
-                "required": true
-              }
-            }
-          ]
+            "type": "tabs",
+            "key": "tabs-2",
+            "props": {
+                "active": "tab-extra"
+            },
+            "children": [
+                {
+                    "type": "tab",
+                    "key": "tab-extra",
+                    "props": {
+                        "label": "Extra"
+                    },
+                    "children": [
+                        {
+                            "type": "text",
+                            "key": "extra",
+                            "name": "extra",
+                            "component": "Text",
+                            "props": {
+                                "label": "Extra"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "tab",
+                    "key": "tab-more",
+                    "props": {
+                        "label": "More"
+                    },
+                    "children": [
+                        {
+                            "type": "text",
+                            "key": "more",
+                            "name": "more",
+                            "component": "Text",
+                            "props": {
+                                "label": "More"
+                            }
+                        }
+                    ]
+                }
+            ]
         },
         {
-          "type": "step",
-          "key": "step-3-1",
-          "props": {
-            "label": "ޕްރޮފައިލް"
-          },
-          "children": [
-            {
-              "type": "text",
-              "key": "name",
-              "name": "name",
-              "component": "Text",
-              "props": {
-                "label": "Name"
-              }
+            "type": "wizard",
+            "key": "wizard-3",
+            "props": {
+                "startStep": 1,
+                "nextLabel": "Next",
+                "previousLabel": "Back",
+                "stepLabel": "Step :current of :total"
+            },
+            "children": [
+                {
+                    "type": "step",
+                    "key": "step-3-0",
+                    "props": {
+                        "label": "އެކައުންޓް",
+                        "description": "ފުރަތަމަ"
+                    },
+                    "children": [
+                        {
+                            "type": "text",
+                            "key": "email",
+                            "name": "email",
+                            "component": "Email",
+                            "props": {
+                                "label": "Email",
+                                "required": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "step",
+                    "key": "step-3-1",
+                    "props": {
+                        "label": "ޕްރޮފައިލް"
+                    },
+                    "children": [
+                        {
+                            "type": "text",
+                            "key": "name",
+                            "name": "name",
+                            "component": "Text",
+                            "props": {
+                                "label": "Name"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "alert",
+            "key": "alert-4",
+            "props": {
+                "message": "ސަމާލުކަމަށް",
+                "type": "warning"
             }
-          ]
+        },
+        {
+            "type": "text-entry",
+            "key": "entry-title",
+            "props": {
+                "name": "title",
+                "label": "ސުރުހީ (ބަލާލުމަށް)",
+                "value": "ރާއްޖެ"
+            }
         }
-      ]
-    },
-    {
-      "type": "alert",
-      "key": "alert-4",
-      "props": {
-        "message": "ސަމާލުކަމަށް",
-        "type": "warning"
-      }
-    },
-    {
-      "type": "text-entry",
-      "key": "entry-title",
-      "props": {
-        "name": "title",
-        "label": "ސުރުހީ (ބަލާލުމަށް)",
-        "value": "ރާއްޖެ"
-      }
-    }
-  ]
+    ]
 }
