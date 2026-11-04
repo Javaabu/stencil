@@ -60,6 +60,7 @@ class JsonRenderer implements Renderer
             'children' => $node->children ? array_map($this->node(...), $node->children) : null,
             'conditions' => $node->conditions ?: null,
             'live' => $node->live,
+            'translatable' => $node->translatable,
             'span' => $node->span,
             'meta' => $node->meta ? Props::jsonValue($node->meta) : null,
         ], fn ($value) => $value !== null);

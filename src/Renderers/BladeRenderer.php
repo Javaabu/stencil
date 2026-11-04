@@ -168,7 +168,31 @@ class BladeRenderer implements Renderer
      */
     public function field(Node $node, array $props = []): HtmlString
     {
+        if ($node->component === null && $node->translatable) {
+            throw new StencilException("The [{$node->type}] field [{$node->key}] is translatable, which needs a javaabu/forms component.");
+        }
+
         return $this->component($node->component, ['name' => $node->name, ...$node->props, ...$props]);
+    }
+
+    /**
+     * The props of one translatable input: its name, label, direction, Thaana and
+     * whether it's required (the primary locale, unless every locale is required).
+     *
+     * @param  array<string, mixed>  $input
+     * @return array<string, mixed>
+     */
+    public function translatableProps(Node $node, array $input): array
+    {
+        return array_filter([
+            ...$node->props,
+            'name' => $input['name'],
+            'label' => $input['label'],
+            'required' => $node->prop('required') && $input['primary'] ? true : null,
+            'thaana' => $input['thaana'] && in_array($node->component, ['text', 'textarea']) ? true : null,
+            'dir' => $input['direction'],
+            'lang' => $input['locale'],
+        ], fn ($value) => $value !== null);
     }
 
     /**
@@ -181,7 +205,7 @@ class BladeRenderer implements Renderer
 
     public function viewFor(Node $node): string
     {
-        $view = $this->manager->viewFor($node->type);
+        $view = $this->manager->viewFor($node->translatable ? 'translatable' : $node->type);
 
         if (view()->exists($view)) {
             return $view;
@@ -280,7 +304,7 @@ class BladeRenderer implements Renderer
     protected function guard(Node $root): void
     {
         foreach ($root->descendants() as $node) {
-            if ($node->hidden || ! $node->isField() || $node->component !== null) {
+            if ($node->hidden || ! $node->isField() || $node->component !== null || $node->translatable) {
                 continue;
             }
 

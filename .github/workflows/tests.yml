@@ -66,6 +66,29 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: false
 
+  without-optional:
+    runs-on: ubuntu-latest
+
+    name: Without optional packages (javaabu/translatable)
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+          extensions: mbstring, pdo, sqlite, pdo_sqlite, zip
+          coverage: none
+
+      - name: Install dependencies without javaabu/translatable
+        run: |
+          composer remove --dev javaabu/translatable --no-update --no-interaction
+          composer update --prefer-dist --no-interaction
+
+      - name: Run tests
+        run: vendor/bin/phpunit
+
   pint:
     runs-on: ubuntu-latest
 

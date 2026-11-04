@@ -23,6 +23,8 @@ export {
   Wizard,
   Alert,
   TextEntry,
+  TranslatableField,
+  translatableInputNode,
   optionId,
 } from "./components"
 export { evaluate, evaluationBody, evaluationHeaders, toDotName, type StencilHtmlEvaluation } from "./live"

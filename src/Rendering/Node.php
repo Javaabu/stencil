@@ -24,6 +24,7 @@ class Node
      * @param  array<string, int|string>|null  $span  grid columns taken, per breakpoint
      * @param  string|null  $view  a Blade view replacing the default one
      * @param  array<string, mixed>  $meta  extra data for custom drivers and components
+     * @param  array{layout: string, inputs: array<int, array<string, mixed>>}|null  $translatable  one input per locale (javaabu/translatable)
      */
     public function __construct(
         public string $type,
@@ -39,6 +40,7 @@ class Node
         public ?string $view = null,
         public array $meta = [],
         public ?Component $source = null,
+        public ?array $translatable = null,
     ) {}
 
     public function prop(string $key, mixed $default = null): mixed

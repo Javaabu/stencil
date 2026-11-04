@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Javaabu\Stencil\Components\Component;
+use Javaabu\Stencil\Fields\Concerns\CanBeTranslatable;
 use Javaabu\Stencil\Rendering\Node;
 use UnitEnum;
 
@@ -19,6 +20,8 @@ use UnitEnum;
  */
 abstract class Field extends Component
 {
+    use CanBeTranslatable;
+
     /**
      * The javaabu/forms component it renders as, in Blade's spelling (text, select2, file-upload).
      */
@@ -125,6 +128,12 @@ abstract class Field extends Component
      */
     public function getSelector(): string
     {
+        $primary = $this->primaryTranslatableInput();
+
+        if ($primary !== null) {
+            return '#' . $primary->name;
+        }
+
         return '#' . $this->getId();
     }
 
@@ -403,6 +412,78 @@ abstract class Field extends Component
     }
 
     /**
+     * Writes the field's value from the record into the state. A translatable
+     * field writes each input (name_en, name_dv), and its name holds the primary one.
+     *
+     * @param  array<string, mixed>  $state
+     */
+    public function hydrateStateInto(array &$state, mixed $record): void
+    {
+        $value = $this->hydrateState($record);
+
+        data_set($state, $this->getStatePath(), $value);
+
+        foreach ($this->translatableValues($record, $value) as $name => $translation) {
+            $state[$name] = $this->normalizeState($translation);
+        }
+    }
+
+    /**
+     * Writes the field's value from submitted input (or old input) into the state.
+     *
+     * @param  array<string, mixed>  $state
+     * @param  array<string, mixed>  $input
+     */
+    public function fillStateFrom(array &$state, array $input): void
+    {
+        $inputs = $this->getTranslatableInputs();
+
+        if ($inputs === []) {
+            data_set($state, $this->getStatePath(), $this->normalizeState(data_get($input, $this->getStatePath())));
+
+            return;
+        }
+
+        foreach ($inputs as $locale_input) {
+            $state[$locale_input->name] = $this->normalizeState($input[$locale_input->name] ?? null);
+
+            if ($locale_input->is_primary) {
+                data_set($state, $this->getStatePath(), $state[$locale_input->name]);
+            }
+        }
+    }
+
+    /**
+     * Writes the field's dehydrated value into validated data. A translatable
+     * field writes each input.
+     *
+     * @param  array<string, mixed>  $data
+     * @param  array<string, mixed>  $state
+     */
+    public function dehydrateInto(array &$data, array $state): void
+    {
+        foreach ($this->getDehydratedPaths() as $path) {
+            data_set($data, $path, $this->dehydrateState(data_get($state, $path)));
+        }
+    }
+
+    /**
+     * Where the field's value is in validated data: its name, or each translatable input.
+     *
+     * @return array<int, string>
+     */
+    public function getDehydratedPaths(): array
+    {
+        $inputs = $this->getTranslatableInputs();
+
+        if ($inputs === []) {
+            return [$this->getStatePath()];
+        }
+
+        return array_values(array_map(fn ($input) => $input->name, $inputs));
+    }
+
+    /**
      * The field's own value in the form's state.
      */
     public function getState(): mixed
@@ -570,7 +651,45 @@ abstract class Field extends Component
      */
     public function getAllValidationRules(): array
     {
-        return [$this->getStatePath() => $this->getValidationRules()];
+        return $this->translateFieldRules([$this->getStatePath() => $this->getValidationRules()]);
+    }
+
+    /**
+     * For a translatable field, rules per input; otherwise the rules as given.
+     *
+     * @param  array<string, array<int, mixed>>  $rules
+     * @return array<string, array<int, mixed>>
+     */
+    protected function translateFieldRules(array $rules): array
+    {
+        if (! $this->isTranslatable()) {
+            return $rules;
+        }
+
+        return $this->translateRules($rules);
+    }
+
+    /**
+     * Names for validation messages, keyed by input: the label, or "Name (ދިވެހި)" per locale.
+     *
+     * @return array<string, string>
+     */
+    public function getValidationAttributes(): array
+    {
+        $attribute = $this->getValidationAttribute();
+        $inputs = $this->getTranslatableInputs();
+
+        if ($inputs === []) {
+            return [$this->getStatePath() => $attribute];
+        }
+
+        $attributes = [];
+
+        foreach ($inputs as $input) {
+            $attributes[$input->name] = $input->label($attribute);
+        }
+
+        return $attributes;
     }
 
     /**
@@ -581,7 +700,15 @@ abstract class Field extends Component
         $messages = [];
 
         foreach ($this->validation_messages as $rule => $message) {
-            $messages[str_contains($rule, '.') ? $rule : "{$this->getStatePath()}.{$rule}"] = $message;
+            if (str_contains($rule, '.')) {
+                $messages[$rule] = $message;
+
+                continue;
+            }
+
+            foreach ($this->getDehydratedPaths() as $path) {
+                $messages["{$path}.{$rule}"] = $message;
+            }
         }
 
         return $messages;
@@ -646,6 +773,7 @@ abstract class Field extends Component
 
         if (! $node->hidden) {
             $node->live = $this->getLive();
+            $node->translatable = $this->getTranslatableForDriver();
         }
 
         return $node;

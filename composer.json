@@ -37,9 +37,13 @@
   },
   "require-dev": {
     "javaabu/boost-javaabu-guidelines": "^1.4",
+    "javaabu/translatable": "^3.0@dev",
     "laravel/pint": "^1.24",
     "orchestra/testbench": "^10.0 || ^11.0",
     "phpunit/phpunit": "^11.5.3 || ^12.5.8"
+  },
+  "suggest": {
+    "javaabu/translatable": "Per-locale inputs for translatable fields (^3.0)"
   },
   "autoload": {
     "psr-4": {
@@ -78,6 +82,10 @@
     {
       "type": "vcs",
       "url": "https://github.com/Javaabu/manifest"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/n4ff4h/translatable"
     }
   ],
   "config": {

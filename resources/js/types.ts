@@ -54,6 +54,20 @@ export interface StencilNode {
   live?: StencilLive
   span?: Span
   meta?: Record<string, unknown>
+  /** One input per locale, when the field is translatable (javaabu/translatable). */
+  translatable?: {
+    layout: "tabs" | "stacked"
+    inputs: {
+      field: string
+      name: string
+      locale: string
+      direction: "ltr" | "rtl"
+      thaana: boolean
+      primary: boolean
+      label: string
+      language?: Record<string, unknown>
+    }[]
+  }
 }
 
 export interface StencilLiveConfig {

@@ -478,9 +478,13 @@ class Form extends Component implements Arrayable, Htmlable, JsonSerializable, S
 
         $this->state = [];
 
-        foreach ($this->getFields() as $path => $field) {
-            data_set($this->state, $path, $field->normalizeState(data_get($state, $path)));
+        $filled = [];
+
+        foreach ($this->getFields() as $field) {
+            $field->fillStateFrom($filled, $state);
         }
+
+        $this->state = $filled;
 
         return $this;
     }
@@ -506,8 +510,8 @@ class Form extends Component implements Arrayable, Htmlable, JsonSerializable, S
 
         $this->state = [];
 
-        foreach ($this->getFields() as $path => $field) {
-            data_set($state, $path, $field->hydrateState($this->record));
+        foreach ($this->getFields() as $field) {
+            $field->hydrateStateInto($state, $this->record);
         }
 
         $request = app('request');
@@ -522,8 +526,10 @@ class Form extends Component implements Arrayable, Htmlable, JsonSerializable, S
             return $state;
         }
 
-        foreach ($this->getFields() as $path => $field) {
-            data_set($state, $path, $field->normalizeState($session->getOldInput($path)));
+        $old = $session->getOldInput();
+
+        foreach ($this->getFields() as $field) {
+            $field->fillStateFrom($state, $old);
         }
 
         return $state;
@@ -630,8 +636,8 @@ class Form extends Component implements Arrayable, Htmlable, JsonSerializable, S
     {
         $attributes = [];
 
-        foreach ($this->getValidatedFields() as $path => $field) {
-            $attributes[$path] = $field->getValidationAttribute();
+        foreach ($this->getValidatedFields() as $field) {
+            $attributes = array_merge($attributes, $field->getValidationAttributes());
         }
 
         return $attributes;
@@ -682,12 +688,14 @@ class Form extends Component implements Arrayable, Htmlable, JsonSerializable, S
     {
         $data = [];
 
-        foreach ($this->getFields() as $path => $field) {
+        $state = $this->getState();
+
+        foreach ($this->getFields() as $field) {
             if (! $field->isDehydrated()) {
                 continue;
             }
 
-            data_set($data, $path, $field->dehydrateState($this->getStateValue($path)));
+            $field->dehydrateInto($data, $state);
         }
 
         return $data;
@@ -706,18 +714,20 @@ class Form extends Component implements Arrayable, Htmlable, JsonSerializable, S
 
         $attributes = [];
 
-        foreach ($this->getFields() as $path => $field) {
+        foreach ($this->getFields() as $field) {
             if (! $field->savesToAttribute()) {
                 continue;
             }
 
-            if (! Arr::has($data, $path)) {
-                continue;
+            foreach ($field->getDehydratedPaths() as $path) {
+                if (! Arr::has($data, $path)) {
+                    continue;
+                }
+
+                $root = Str::before($path, '.');
+
+                $attributes[$root] = $data[$root];
             }
-
-            $root = Str::before($path, '.');
-
-            $attributes[$root] = $data[$root];
         }
 
         return $record->fill($attributes);

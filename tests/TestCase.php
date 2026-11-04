@@ -8,13 +8,17 @@ use Javaabu\Forms\FormsServiceProvider;
 use Javaabu\Helpers\HelpersServiceProvider;
 use Javaabu\Manifest\ManifestServiceProvider;
 use Javaabu\Stencil\StencilServiceProvider;
+use Javaabu\Translatable\TranslatableServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
     protected function getPackageProviders($app): array
     {
+        $optional = class_exists(TranslatableServiceProvider::class) ? [TranslatableServiceProvider::class] : [];
+
         return [
+            ...$optional,
             HelpersServiceProvider::class,
             ManifestServiceProvider::class,
             FormsServiceProvider::class,
@@ -63,6 +67,8 @@ abstract class TestCase extends BaseTestCase
             $table->string('type')->nullable();
             $table->string('company_name')->nullable();
             $table->json('address')->nullable();
+            $table->json('translations')->nullable();
+            $table->string('lang')->nullable();
             $table->timestamps();
         });
 

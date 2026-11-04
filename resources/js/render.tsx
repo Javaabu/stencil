@@ -39,7 +39,11 @@ export function StencilNodeRenderer({ node }: { node: StencilNode }) {
 
   if (node.hidden) return null
 
-  const Component = components[node.type] ?? (node.component ? components.field : undefined) ?? components.group
+  const Component =
+    (node.translatable ? components.translatable : undefined) ??
+    components[node.type] ??
+    (node.component ? components.field : undefined) ??
+    components.group
 
   const renderChildren: StencilComponentProps["renderChildren"] = (nodes = node.children ?? [], columns) => (
     <Children nodes={nodes} columns={(columns as Columns | null | undefined) ?? null} />
