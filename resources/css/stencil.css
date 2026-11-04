@@ -53,7 +53,10 @@
 @media (min-width: 1280px) {
   .stencil-grid {
     grid-template-columns: repeat(
-      var(--stencil-cols-xl, var(--stencil-cols-lg, var(--stencil-cols-md, var(--stencil-cols-sm, var(--stencil-cols, 1))))),
+      var(
+        --stencil-cols-xl,
+        var(--stencil-cols-lg, var(--stencil-cols-md, var(--stencil-cols-sm, var(--stencil-cols, 1))))
+      ),
       minmax(0, 1fr)
     );
   }

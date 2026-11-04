@@ -86,3 +86,35 @@ jobs:
       - name: Check code style
         run: vendor/bin/pint --test
 
+  js:
+    runs-on: ubuntu-latest
+
+    name: React renderer and Blade script
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install npm dependencies
+        run: pnpm install --frozen-lockfile
+
+      - run: pnpm lint
+      - run: pnpm format:check
+      - run: pnpm typecheck
+
+      - name: Tests with coverage
+        run: pnpm test:coverage
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v5
+        with:
+          files: coverage/lcov.info
+          flags: js
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false

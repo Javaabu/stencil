@@ -1,0 +1,8 @@
+dist
+coverage
+node_modules
+vendor
+build
+pnpm-lock.yaml
+*.php
+*.md

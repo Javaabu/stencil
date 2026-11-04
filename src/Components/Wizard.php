@@ -48,6 +48,7 @@ class Wizard extends Component
             'startStep' => (int) $this->evaluate($this->start_step),
             'nextLabel' => __('stencil::strings.next'),
             'previousLabel' => __('stencil::strings.previous'),
+            'stepLabel' => __('stencil::strings.step'),
         ];
     }
 }
