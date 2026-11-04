@@ -6,6 +6,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Javaabu\Manifest\Concerns\RegistersAssets;
 use Javaabu\Manifest\Package;
+use Javaabu\Stencil\Commands\MakeFieldCommand;
 use Javaabu\Stencil\Http\Controllers\EvaluateController;
 
 class StencilServiceProvider extends ServiceProvider
@@ -42,6 +43,8 @@ class StencilServiceProvider extends ServiceProvider
         if (! $this->app->runningInConsole()) {
             return;
         }
+
+        $this->commands([MakeFieldCommand::class]);
 
         $this->publishes([
             __DIR__ . '/../config/stencil.php' => config_path('stencil.php'),

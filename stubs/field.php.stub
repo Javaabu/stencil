@@ -1,0 +1,46 @@
+<?php
+
+namespace {{ namespace }};
+
+use Closure;
+use Javaabu\Stencil\Fields\Field;
+
+class {{ class }} extends Field
+{
+    /**
+     * The node type: the Blade view and the React component are registered for it.
+     */
+    protected string $type = '{{ type }}';
+
+    /**
+     * Rendered with this Blade view instead of a javaabu/forms component.
+     */
+    protected ?string $view = '{{ view }}';
+
+    protected int|Closure $max = 5;
+
+    public function max(int|Closure $max): static
+    {
+        $this->max = $max;
+
+        return $this;
+    }
+
+    /**
+     * Rules that come with the field type, after required/nullable and before rules().
+     */
+    protected function getTypeRules(): array
+    {
+        return ['integer', 'min:1', "max:{$this->evaluate($this->max)}"];
+    }
+
+    /**
+     * Props the Blade view and the React component get, besides label, required, help, ….
+     */
+    protected function getFieldProps(): array
+    {
+        return [
+            'max' => $this->evaluate($this->max),
+        ];
+    }
+}

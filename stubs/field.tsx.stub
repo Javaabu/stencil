@@ -1,0 +1,35 @@
+import { FormGroup, useFieldValue } from "@javaabu/forms"
+import type { StencilComponentProps } from "@javaabu/stencil"
+
+/**
+ * The {{ type }} field. Register it once, next to FormsProvider:
+ *   <StencilProvider components={{ "{{ type }}": {{ class }} }}>
+ */
+export function {{ class }}({ node }: StencilComponentProps) {
+  const name = node.name ?? node.key
+  const { label, required, inline, showLabel, help, disabled, max } = (node.props ?? {}) as {
+    label?: string
+    required?: boolean
+    inline?: boolean
+    showLabel?: boolean
+    help?: string
+    disabled?: boolean
+    max?: number
+  }
+  const value = useFieldValue(name, undefined, undefined)
+
+  return (
+    <FormGroup name={name} label={label} required={required} inline={inline} showLabel={showLabel} help={help}>
+      <input
+        type="number"
+        id={name.replace(/\[/g, "-").replace(/\]/g, "")}
+        name={name}
+        defaultValue={value === null || value === undefined ? "" : String(value)}
+        min={1}
+        max={max}
+        disabled={disabled}
+        required={required}
+      />
+    </FormGroup>
+  )
+}

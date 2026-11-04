@@ -8,6 +8,7 @@ use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Javaabu\Manifest\Facades\Manifest;
 use Javaabu\Stencil\Contracts\Renderer;
+use Javaabu\Stencil\Exceptions\StencilException;
 use Javaabu\Stencil\Form;
 use Javaabu\Stencil\Rendering\Node;
 use Javaabu\Stencil\StencilManager;
@@ -46,6 +47,9 @@ class BladeRenderer implements Renderer
 
     protected bool $live = false;
 
+    /** @var array<string, mixed> */
+    protected array $state = [];
+
     public function __construct(
         protected StencilManager $manager,
     ) {}
@@ -56,6 +60,9 @@ class BladeRenderer implements Renderer
         $live = $form->getLiveConfig();
 
         $this->live = $live !== null;
+        $this->state = $form->getState();
+
+        $this->guard($root);
 
         $this->requireAssets($root, $live !== null);
 
@@ -96,7 +103,9 @@ class BladeRenderer implements Renderer
                 : '');
         }
 
-        $html = view($node->view ?? $this->viewFor($node), [
+        $view = $node->view ?? $this->viewFor($node);
+
+        $html = view($view, [
             'node' => $node,
             'stencil' => $this,
         ])->render();
@@ -160,6 +169,14 @@ class BladeRenderer implements Renderer
     public function field(Node $node, array $props = []): HtmlString
     {
         return $this->component($node->component, ['name' => $node->name, ...$node->props, ...$props]);
+    }
+
+    /**
+     * A field's value for a custom view: old input, then the form's state.
+     */
+    public function value(Node $node): mixed
+    {
+        return old($node->key, data_get($this->state, $node->key));
     }
 
     public function viewFor(Node $node): string
@@ -255,6 +272,27 @@ class BladeRenderer implements Renderer
     public function optionId(Node $node, int|string $value): string
     {
         return Str::of($node->name)->before('[]')->replace(['[', ']'], ['-', ''])->append('-' . Str::slug((string) $value) ?: (string) $value)->toString();
+    }
+
+    /**
+     * Fails early, outside the views, for fields there's nothing to render with.
+     */
+    protected function guard(Node $root): void
+    {
+        foreach ($root->descendants() as $node) {
+            if ($node->hidden || ! $node->isField() || $node->component !== null) {
+                continue;
+            }
+
+            if ($node->view !== null || $this->viewFor($node) !== 'stencil::components.field') {
+                continue;
+            }
+
+            throw new StencilException(
+                "The [{$node->type}] field [{$node->key}] has no javaabu/forms component and no Blade view. "
+                . "Set \$view on the field class, or register one with Stencil::view('{$node->type}', '…').",
+            );
+        }
     }
 
     protected function requireAssets(Node $root, bool $live): void
