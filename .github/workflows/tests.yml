@@ -96,6 +96,11 @@ jobs:
 
       - uses: pnpm/action-setup@v4
 
+      # Keep the store out of pnpm's own node_modules/.bin, where @javaabu/forms'
+      # prepare build can't emit portable types (Javaabu/react-forms#20).
+      - name: Use a pnpm store outside node_modules
+        run: pnpm config set store-dir ~/.pnpm-store
+
       - uses: actions/setup-node@v5
         with:
           node-version: 22
