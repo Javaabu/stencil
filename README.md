@@ -7,14 +7,43 @@
 
 Fluent form schemas for Laravel. Define a form once in PHP and render it with Blade ([javaabu/forms](https://github.com/Javaabu/forms)) or Inertia React ([@javaabu/forms](https://github.com/Javaabu/react-forms)), with model binding, validation rules derived from the schema, and closure-evaluated, conditional props.
 
+```php
+$form = Form::make()
+    ->model($article)
+    ->action(route('articles.update', $article))
+    ->schema([
+        Section::make(__('Details'))->columns(2)->schema([
+            TextInput::make('title')->required()->maxLength(255)->thaana(),
+            Select::make('status')->options(ArticleStatuses::class)->required(),
+            Select::make('tags')->multiple()->relationship('tags', 'name'),
+            TextInput::make('company_name')->visibleWhen('type', 'company'),
+        ]),
+    ]);
+```
+
+```blade
+{{ $form }}
+```
+
+```tsx
+<StencilForm schema={form} />   // Inertia::render('Articles/Edit', ['form' => $form])
+```
+
+```php
+$article = $form->save();       // validates the request, fills the model, saves it and its relationships
+```
+
 ## Documentation
 
 You'll find the documentation on [https://docs.javaabu.com/stencil](https://docs.javaabu.com/stencil), and in the [`docs`](docs) folder.
+
+AI coding assistants can start from [`llms.txt`](llms.txt). The package ships a [Laravel Boost](https://github.com/laravel/boost) skill and guideline, which Boost finds by itself. See [AI assistants](docs/ai-assistants.md).
 
 ## Testing
 
 ```bash
 composer test
+pnpm test
 ```
 
 ## Changelog

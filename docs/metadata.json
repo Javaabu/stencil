@@ -1,0 +1,5 @@
+{
+    "name": "Stencil",
+    "description": "Fluent form schemas for Laravel: define a form once in PHP and render it with Blade or Inertia React, with model binding, validation and closure-evaluated, conditional props",
+    "version": "1"
+}

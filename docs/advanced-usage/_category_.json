@@ -1,0 +1,11 @@
+{
+    "position": 1.32,
+    "label": "Advanced Usage",
+    "collapsible": true,
+    "collapsed": true,
+    "link": {
+        "type": "generated-index",
+        "slug": "/stencil/_categories/advanced-usage",
+        "description": "Configuration, custom fields, drivers and the JSON format, testing, translatable fields, views, Dhivehi and the full API."
+    }
+}

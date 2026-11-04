@@ -1,0 +1,46 @@
+# javaabu/stencil
+
+> Fluent form schemas for Laravel. Define a form once in PHP and render it with Blade (javaabu/forms v2) or Inertia React (@javaabu/forms, through the React renderer imported as @javaabu/stencil), with model binding, validation rules derived from the schema, saving to the model and its relationships, closure-evaluated props, conditions and live fields. Dhivehi and RTL built in.
+
+Paths are relative to this file. In a project, that's vendor/javaabu/stencil/.
+
+## Rules
+
+- Build forms with `Form::make()->schema([...])`, or a class that extends `Javaabu\Stencil\Form` and returns its components from `definition()`. Use a class for forms you reuse and for any form with live fields.
+- Bind the record with `->model($record)` (or a model class for create forms, or an array for settings and filters). Don't pass values to fields: they fill from old input, the record and `default()`.
+- Don't write validation rules the schema already gives (`required()`, `email()`, `maxLength()`, options, `unique()`); use `$form->validate($request)` and `$form->save()`. Add other rules with `->rules([...])`.
+- Use `visibleWhen()` / `hiddenWhen()` / `…WhenChecked()` for "show this when that field has a value"; they work in the browser and on the server. Use closures (`->visible(fn (Get $get) => …)`) for anything else, and `->live()` on the fields they read.
+- Live fields need a form class and `Route::stencil()` in the app's routes. Never put secrets in what closures return: the live route returns it to the user.
+- Closures get arguments by name (`$get`, `$set`, `$state`, `$old`, `$record`, `$model`, `$operation`, `$component`, `$form`) or by type (`Get`, `Set`, the model class, container classes).
+- Render with `{{ $form }}` in Blade and `Inertia::render('Page', ['form' => $form])` + `<StencilForm schema={form} />` in React. Packages that support both call `Stencil::render($form)` (config `stencil.views`). Use `->embedded()` / `<StencilFields>` inside your own form.
+- Names use dots or brackets (`address.city` = `address[city]`). Name `BelongsTo` selects by foreign key (`atoll_id`) and `BelongsToMany` selects by relationship (`tags`) with `->relationship()`.
+- Add `->thaana()` to text fields that take Dhivehi. Pass every label, help text, heading and option through `__()`.
+- For a new field type, run `php artisan make:stencil-field Name`: a Field class, a Blade view and a React component registered with `StencilProvider`.
+- Test forms with `$form->assertable()` (or the `InteractsWithStencil` trait) rather than parsing HTML.
+
+## Docs
+
+- [Introduction](docs/intro.md): what the package does
+- [Requirements](docs/requirements.md): PHP, Laravel, forms, manifest and optional packages
+- [Installation & Setup](docs/installation-and-setup.md): installing, the live route, React with manifest's Vite plugin, publishing
+- [AI assistants](docs/ai-assistants.md): Laravel Boost and these docs
+- [Forms](docs/basic-usage/forms.md): inline forms and form classes, the record and operation, context, submitting, rendering with Blade and Inertia, embedded forms
+- [Fields](docs/basic-usage/fields.md): every field and its options: text, choices, relationships, dates, files
+- [Layout](docs/basic-usage/layout.md): sections, grids, groups, fieldsets, tabs, wizards, alerts, text entries, columns and spans
+- [Closures and conditions](docs/basic-usage/closures-and-conditions.md): closure arguments, hiding on the server, conditions in the browser
+- [Live fields](docs/basic-usage/live-fields.md): live(), afterStateUpdated() and $set, Route::stencil(), tokens and security
+- [Validation and saving](docs/basic-usage/validation-and-saving.md): the state, rules from the schema, validate(), what's saved, save() and relationships
+- [React](docs/basic-usage/react.md): StencilForm, StencilFields, built-in and custom components
+- [Configuration](docs/advanced-usage/configuration.md): every config option and the assets
+- [Custom fields](docs/advanced-usage/custom-fields.md): make:stencil-field, the class, the Blade view, the React component
+- [Drivers](docs/advanced-usage/drivers.md): nodes, writing and registering a driver, RendererTestKit
+- [JSON format](docs/advanced-usage/json-format.md): the json driver's output, nodes, conditions, built-in types, the live route
+- [Testing](docs/advanced-usage/testing.md): AssertableForm and every assertion, testing the live route
+- [Translatable fields](docs/advanced-usage/translatable.md): optional javaabu/translatable support
+- [Customizing views](docs/advanced-usage/customizing-views.md): the Blade views and replacing them
+- [Dhivehi and RTL](docs/advanced-usage/dhivehi-and-rtl.md): strings, translations for review, Thaana, RTL
+- [API reference](docs/advanced-usage/api-reference.md): every PHP class and JavaScript export
+- [Questions and Security](docs/questions-and-security.md): where to get help
+- [Changelog](docs/changelog.md): where changes are listed
+- [About Us](docs/about-us.md): Javaabu
+- [Contributing to the docs](docs/contributing-to-docs.md): how the docs are built
