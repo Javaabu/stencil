@@ -2,7 +2,7 @@
 
 namespace Javaabu\Stencil\Tests\Feature;
 
-use Javaabu\Stencil\Tests\Fixtures\Forms\KitchenSinkForm;
+use Javaabu\Stencil\Testing\KitchenSinkForm;
 use Javaabu\Stencil\Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 

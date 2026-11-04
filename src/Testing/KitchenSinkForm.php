@@ -1,6 +1,6 @@
 <?php
 
-namespace Javaabu\Stencil\Tests\Fixtures\Forms;
+namespace Javaabu\Stencil\Testing;
 
 use Illuminate\Support\Str;
 use Javaabu\Stencil\Components\Alert;
@@ -22,7 +22,8 @@ use Javaabu\Stencil\Get;
 use Javaabu\Stencil\Set;
 
 /**
- * Every built-in type, serialized to tests/js/fixtures/kitchen-sink.json for the React tests.
+ * A form with every built-in component type, for testing drivers and renderers
+ * (RendererTestKit) and the JavaScript renderers in this package.
  */
 class KitchenSinkForm extends Form
 {

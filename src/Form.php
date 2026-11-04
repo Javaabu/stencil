@@ -19,6 +19,7 @@ use Javaabu\Stencil\Fields\Field;
 use Javaabu\Stencil\Fields\FileUpload;
 use Javaabu\Stencil\Http\LiveToken;
 use Javaabu\Stencil\Rendering\Node;
+use Javaabu\Stencil\Testing\AssertableForm;
 use JsonSerializable;
 use Stringable;
 
@@ -871,6 +872,14 @@ class Form extends Component implements Arrayable, Htmlable, JsonSerializable, S
     public function render(?string $driver = null): mixed
     {
         return app(StencilManager::class)->render($this, $driver);
+    }
+
+    /**
+     * Assertions on this form, for tests.
+     */
+    public function assertable(): AssertableForm
+    {
+        return AssertableForm::make($this);
     }
 
     public function toHtml(): string
