@@ -1,0 +1,17 @@
+{
+  "resources/css/stencil.css": {
+    "file": "assets/stencil-Bg1OQeG3.css",
+    "name": "stencil",
+    "names": [
+      "stencil.css"
+    ],
+    "src": "resources/css/stencil.css",
+    "isEntry": true
+  },
+  "resources/js/blade/stencil.ts": {
+    "file": "assets/stencil-CmIs7a29.js",
+    "name": "stencil",
+    "src": "resources/js/blade/stencil.ts",
+    "isEntry": true
+  }
+}

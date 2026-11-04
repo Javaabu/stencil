@@ -118,3 +118,8 @@ jobs:
           flags: js
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: false
+
+      - name: Check that the committed dist is up to date
+        run: |
+          pnpm build
+          git diff --exit-code -- dist || (echo "dist is out of date: run pnpm build and commit it." && exit 1)

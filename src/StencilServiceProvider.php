@@ -27,6 +27,7 @@ class StencilServiceProvider extends ServiceProvider
 
         $this->registerAssets('stencil', __DIR__ . '/../resources', fn (Package $package) => $package
             ->js('js')
+            ->dist('../dist')
             ->style('styles', 'css/stencil.css')
             ->script('stencil', 'js/blade/stencil.ts', depends_on: ['forms::forms', 'stencil::styles'])
             ->npm([
