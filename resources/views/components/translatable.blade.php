@@ -14,7 +14,7 @@
             'name' => str_replace('.', '-', $node->key) . '-' . $input['locale'],
             'title' => $input['language']['native_name'] ?? $input['locale'],
         ], $inputs);
-        $invalid = collect($inputs)->first(fn (array $input) => ($errors ?? new \Illuminate\Support\ViewErrorBag)->has($input['name']));
+        $invalid = collect($inputs)->first(fn (array $input) => ($errors ?? new \Illuminate\Support\ViewErrorBag)->has($input['statePath']));
     @endphp
     <x-forms::tabs
         :tabs="$tabs"

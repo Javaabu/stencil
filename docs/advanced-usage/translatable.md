@@ -21,12 +21,33 @@ When translatable is installed, enabled, and the form's model translates the fie
 | Validation | Your rules through `Translatable::rules()`: the primary locale as written, the others with `required` swapped for `nullable`. `translatable(require_all: true)` requires every locale |
 | Saving | `validate()` returns `name_en` and `name_dv`, which translatable models accept in `fill()`, `create()` and `update()` |
 | Conditions | `visibleWhen('name', …)` watches the primary locale's input |
+| Drivers | Each input has `name` (bracket notation, `meta[subtitle_dv]`) and `statePath` (`meta.subtitle_dv`) |
 
 Both drivers render the same inputs: Blade with javaabu/forms' tabs and inputs, React with `@javaabu/forms`. The JSON node has a `translatable` key with the inputs (see [JSON format](./json-format.md)). To use translatable's own React component, register it as the `translatable` type:
 
 ```tsx
 <StencilProvider components={{ translatable: MyTranslatableField }}>
 ```
+
+# Records that aren't translatable models
+
+Some records keep per-locale values themselves, like javaabu/meta's meta values. Such a record (or a form class) implements `Javaabu\Stencil\Contracts\ResolvesTranslatableFields`, and stencil asks it which fields are translatable instead of `Translatable::supports()`:
+
+```php
+use Javaabu\Stencil\Contracts\ResolvesTranslatableFields;
+
+class Post extends Model implements ResolvesTranslatableFields
+{
+    public function isTranslatableField(string $state_path): bool
+    {
+        return MetaFields::isTranslatable(static::class, Str::after($state_path, 'meta.'));
+    }
+}
+```
+
+The field then gets one input per active locale, as above, for its full state path: `Group::make()->statePath('meta')` with `TextInput::make('subtitle')->translatable()` gives `meta.subtitle_en` and `meta.subtitle_dv` in the state, rules and validated data (input names `meta[subtitle_en]`, `meta[subtitle_dv]`). Values are read with `data_get($record, 'meta.subtitle_dv')`, and the rules are expanded by stencil the same way: the primary locale as written, the others `nullable`.
+
+`isDeclaredTranslatable()` tells whether `->translatable()` was called, whether or not the field ends up with per-locale inputs.
 
 # Installing
 

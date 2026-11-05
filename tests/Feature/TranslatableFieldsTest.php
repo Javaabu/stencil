@@ -2,10 +2,12 @@
 
 namespace Javaabu\Stencil\Tests\Feature;
 
+use Javaabu\Stencil\Components\Group;
 use Javaabu\Stencil\Fields\Textarea;
 use Javaabu\Stencil\Fields\TextInput;
 use Javaabu\Stencil\Form;
 use Javaabu\Stencil\Tests\Fixtures\Models\Article;
+use Javaabu\Stencil\Tests\Fixtures\Models\ResolvingArticle;
 use Javaabu\Stencil\Tests\Fixtures\Models\TranslatableArticle;
 use Javaabu\Stencil\Tests\TestCase;
 use Javaabu\Translatable\Testing\InteractsWithLanguages;
@@ -145,5 +147,68 @@ class TranslatableFieldsTest extends TestCase
             $this->assertEquals(['title' => 'Welcome', 'body' => null, 'slug' => null], $form->validate(['title' => 'Welcome']));
             $this->assertStringContainsString('name="title"', $form->toHtml());
         });
+    }
+
+    protected function nestedForm(mixed $model): Form
+    {
+        return Form::make()->model($model)->schema([
+            TextInput::make('title'),
+            Group::make()->statePath('address')->schema([
+                TextInput::make('line')->label('Line')->required()->translatable(),
+                TextInput::make('island')->translatable(),
+            ]),
+        ]);
+    }
+
+    #[Test]
+    public function it_asks_a_record_that_resolves_translatable_fields(): void
+    {
+        $article = ResolvingArticle::create(['title' => 'x', 'address' => ['line' => 'Majeedhee Magu', 'line_dv' => 'މަޖީދީ މަގު']]);
+
+        $form = $this->nestedForm($article);
+
+        $this->assertTrue($form->getField('address.line')->isTranslatable());
+        $this->assertFalse($form->getField('address.island')->isTranslatable());
+        $this->assertTrue($form->getField('address.island')->isDeclaredTranslatable());
+
+        $state = $form->getState();
+
+        $this->assertEquals('Majeedhee Magu', $state['address']['line_en']);
+        $this->assertEquals('މަޖީދީ މަގު', $state['address']['line_dv']);
+    }
+
+    #[Test]
+    public function it_validates_and_saves_nested_translatable_inputs(): void
+    {
+        $form = $this->nestedForm(new ResolvingArticle);
+
+        $rules = $form->fill([])->rules();
+
+        $this->assertEquals(['required', 'string'], $rules['address.line_en']);
+        $this->assertEquals(['nullable', 'string'], $rules['address.line_dv']);
+        $this->assertArrayNotHasKey('address.line', $rules);
+        $this->assertStringContainsString('ދިވެހި', $form->validationAttributes()['address.line_dv']);
+
+        $data = $form->validate(['title' => 'x', 'address' => ['line_en' => 'Majeedhee Magu', 'line_dv' => 'މަޖީދީ މަގު', 'island' => 'މާލެ']]);
+
+        $this->assertEquals(['line_en' => 'Majeedhee Magu', 'line_dv' => 'މަޖީދީ މަގު', 'island' => 'މާލެ'], $data['address']);
+        $this->assertEquals('މަޖީދީ މަގު', $form->fillModel(new ResolvingArticle, $data)->address['line_dv']);
+    }
+
+    #[Test]
+    public function it_renders_nested_translatable_inputs_with_bracket_names(): void
+    {
+        $form = $this->nestedForm(new ResolvingArticle(['address' => ['line_dv' => 'މަޖީދީ މަގު']]));
+
+        $html = $form->toHtml();
+
+        $this->assertStringContainsString('name="address[line_en]"', $html);
+        $this->assertStringContainsString('name="address[line_dv]"', $html);
+        $this->assertStringContainsString('value="މަޖީދީ މަގު"', $html);
+
+        $inputs = $form->toArray()['components'][1]['children'][0]['translatable']['inputs'];
+
+        $this->assertEquals('address[line_dv]', $inputs[1]['name']);
+        $this->assertEquals('address.line_dv', $inputs[1]['statePath']);
     }
 }

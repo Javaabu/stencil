@@ -48,6 +48,8 @@ abstract class Component
 
     protected ?string $view = null;
 
+    protected ?string $state_path = null;
+
     /** @var array<string, mixed> */
     protected array $meta = [];
 
@@ -94,6 +96,32 @@ abstract class Component
     public function getParent(): ?Component
     {
         return $this->parent;
+    }
+
+    /**
+     * Nest the state of the fields inside under a path: Group::make()->statePath('meta')
+     * gives a field named subtitle the state path meta.subtitle and the input name
+     * meta[subtitle]. On a field, it replaces the path its name gives.
+     */
+    public function statePath(?string $path): static
+    {
+        $this->state_path = $path === null ? null : str_replace(['[]', '[', ']'], ['', '.', ''], trim($path, '.'));
+
+        return $this;
+    }
+
+    /**
+     * The path the fields inside are nested under: the parents' paths and this one's.
+     */
+    public function getChildStatePath(): string
+    {
+        $parent = $this->parent?->getChildStatePath() ?? '';
+
+        if ($this->state_path === null || $this->state_path === '') {
+            return $parent;
+        }
+
+        return $parent === '' ? $this->state_path : "{$parent}.{$this->state_path}";
     }
 
     public function getForm(): Form

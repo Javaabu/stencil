@@ -29,7 +29,8 @@ Every field takes its name: `TextInput::make('name')`. Names use dots or bracket
 | `columnSpan()`, `columnSpanFull()` | See [Layout](./layout.md) |
 | `visible()`, `hidden()`, `visibleWhen()`, … | See [Closures and conditions](./closures-and-conditions.md) |
 | `view(string)` | Render with your own Blade view |
-| `key(string)` | The key in the output; default the name |
+| `key(string)` | The key in the output; default the state path |
+| `statePath(string)` | Store the value under another path than the name gives; see [Nesting state](./layout.md#nesting-state) |
 | `meta(array)` | Extra data for drivers and custom components |
 
 Any of these takes a closure. See [Closures and conditions](./closures-and-conditions.md).
@@ -56,7 +57,7 @@ TextInput::make('quantity')->integer()->minValue(1)->maxValue(10);
 | `tel()` | `tel` | `string` |
 | `url()` | `url` | `string`, `url` |
 | `numeric()` | `number` | `numeric` |
-| `integer()` | `number` with `step="1"` | `integer`; saved as an `int` |
+| `integer()` | `number` with `step="1"` | `integer`; saved as an `int`. `isInteger()` tells |
 | `minLength()`, `maxLength()` | `minlength`, `maxlength` | `min:`, `max:` |
 | `minValue()`, `maxValue()`, `step()` | `min`, `max`, `step` | `min:`, `max:` |
 | `unique(?table, ?column, ignore_record: true)` | | `unique:`, ignoring the record being edited |

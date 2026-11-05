@@ -38,14 +38,15 @@ class BladeRendererTest extends TestCase
     #[Test]
     public function it_renders_a_form_with_javaabu_forms(): void
     {
-        $html = (string) Form::make('company')
+        $html = Form::make('company')
             ->model(['name' => 'ޖާވާބު', 'type' => 'company'])
             ->action('/companies/1')
             ->method('PUT')
             ->schema([
                 TextInput::make('name')->label('ނަން')->required()->thaana()->help('ފުރިހަމަ ނަން')->prefix('@'),
                 Select::make('type')->options(['person' => 'ފަރުދެއް', 'company' => 'ކުންފުންޏެއް']),
-            ]);
+            ])
+            ->toHtml();
 
         $this->assertStringContainsString('<form', $html);
         $this->assertStringContainsString('id="company"', $html);

@@ -15,3 +15,5 @@ Initial development of v1.0:
 - Testing helpers: `AssertableForm`, `InteractsWithStencil`, and `RendererTestKit` for drivers.
 - Optional javaabu/translatable support: per-locale inputs with `->translatable()`.
 - English and Dhivehi strings, Thaana fields and RTL layouts.
+- `statePath()` nests the fields inside a component under a key (`meta[subtitle]`, `meta.subtitle`); `ResolvesTranslatableFields` lets a record or form say which fields are translatable; `TextInput::isInteger()` and `Field::isDeclaredTranslatable()` (#16).
+- `Form` is `Htmlable` but no longer `Stringable`: Blade cast it to a string when it was passed to a component attribute, rendering it there (and recursively when that component rendered the form). Use `{{ $form }}`, `toHtml()` or `render()` instead of `(string) $form` (#17).

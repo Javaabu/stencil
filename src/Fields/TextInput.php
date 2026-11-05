@@ -90,6 +90,14 @@ class TextInput extends Field
         return $this->input_type;
     }
 
+    /**
+     * Whether integer() was called: the value is validated and saved as an int.
+     */
+    public function isInteger(): bool
+    {
+        return $this->is_integer;
+    }
+
     public function isNumeric(): bool
     {
         return $this->input_type === 'number';

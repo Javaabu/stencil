@@ -4,6 +4,7 @@ namespace Javaabu\Stencil\Fields\Concerns;
 
 use Closure;
 use Illuminate\Database\Eloquent\Model;
+use Javaabu\Stencil\Contracts\ResolvesTranslatableFields;
 use Javaabu\Translatable\LocaleInput;
 use Javaabu\Translatable\Translatable;
 
@@ -35,9 +36,23 @@ trait CanBeTranslatable
         return $this;
     }
 
+    /**
+     * Whether translatable() was called (and its condition holds), whether or not
+     * javaabu/translatable is installed or the model translates the field.
+     */
+    public function isDeclaredTranslatable(): bool
+    {
+        return (bool) $this->evaluate($this->is_translatable);
+    }
+
+    /**
+     * Whether the field has one input per locale: it's declared translatable,
+     * javaabu/translatable is installed, and the form's model translates the
+     * field (or the record or form says so with ResolvesTranslatableFields).
+     */
     public function isTranslatable(): bool
     {
-        if (! $this->evaluate($this->is_translatable)) {
+        if (! $this->isDeclaredTranslatable()) {
             return false;
         }
 
@@ -45,9 +60,31 @@ trait CanBeTranslatable
             return false;
         }
 
+        $resolver = $this->translatableResolver();
+
+        if ($resolver !== null) {
+            return Translatable::enabled() && $resolver->isTranslatableField($this->getStatePath());
+        }
+
         $model = $this->translatableModel();
 
         return $model !== null && Translatable::supports($model, $this->getStatePath());
+    }
+
+    /**
+     * The form or record that decides which fields are translatable, if either does.
+     */
+    protected function translatableResolver(): ?ResolvesTranslatableFields
+    {
+        $form = $this->getForm();
+
+        if ($form instanceof ResolvesTranslatableFields) {
+            return $form;
+        }
+
+        $record = $form->getRecord();
+
+        return $record instanceof ResolvesTranslatableFields ? $record : null;
     }
 
     /**
@@ -102,7 +139,12 @@ trait CanBeTranslatable
         return [
             'layout' => $this->translatable_layout,
             'inputs' => array_values(array_map(
-                fn (LocaleInput $input) => [...$input->toArray(), 'label' => $input->label($label)],
+                fn (LocaleInput $input) => [
+                    ...$input->toArray(),
+                    'name' => static::toInputName($input->name),
+                    'statePath' => $input->name,
+                    'label' => $input->label($label),
+                ],
                 $this->getTranslatableInputs(),
             )),
         ];
@@ -116,7 +158,27 @@ trait CanBeTranslatable
      */
     protected function translateRules(array $rules): array
     {
-        return Translatable::rules($this->translatableModel(), $rules, $this->translatable_require_all);
+        if ($this->translatableResolver() === null) {
+            return Translatable::rules($this->translatableModel(), $rules, $this->translatable_require_all);
+        }
+
+        $expanded = [];
+
+        foreach ($rules as $path => $field_rules) {
+            if ($path !== $this->getStatePath()) {
+                $expanded[$path] = $field_rules;
+
+                continue;
+            }
+
+            foreach ($this->getTranslatableInputs() as $input) {
+                $expanded[$input->name] = $input->is_primary || $this->translatable_require_all
+                    ? $field_rules
+                    : ['nullable', ...array_values(array_filter($field_rules, fn ($rule) => $rule !== 'required' && $rule !== 'nullable'))];
+            }
+        }
+
+        return $expanded;
     }
 
     /**
@@ -132,12 +194,14 @@ trait CanBeTranslatable
             return [];
         }
 
-        $values = $record instanceof Model ? Translatable::values($record, [$this->getStatePath()]) : [];
+        $values = $record instanceof Model && $this->translatableResolver() === null
+            ? Translatable::values($record, [$this->getStatePath()])
+            : [];
 
         $state = [];
 
         foreach ($inputs as $input) {
-            $value = $values[$input->name] ?? null;
+            $value = array_key_exists($input->name, $values) ? $values[$input->name] : data_get($record, $input->name);
 
             $state[$input->name] = $value === null && $input->is_primary ? $fallback : $value;
         }

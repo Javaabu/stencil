@@ -100,9 +100,24 @@ abstract class Field extends Component
         return $this->name;
     }
 
+    /**
+     * The full path of the field's value in the form's state, in dot notation:
+     * its name (or statePath()), under the state paths of the components around it.
+     */
     public function getStatePath(): string
     {
-        return $this->name;
+        $own = $this->state_path ?? $this->name;
+        $prefix = $this->parent?->getChildStatePath() ?? '';
+
+        return $prefix === '' ? $own : "{$prefix}.{$own}";
+    }
+
+    /**
+     * The fields inside a field aren't nested under it.
+     */
+    public function getChildStatePath(): string
+    {
+        return $this->parent?->getChildStatePath() ?? '';
     }
 
     /**
@@ -110,7 +125,15 @@ abstract class Field extends Component
      */
     public function getInputName(): string
     {
-        $segments = explode('.', $this->name);
+        return static::toInputName($this->getStatePath());
+    }
+
+    /**
+     * A dot path as an input name: meta.subtitle_dv → meta[subtitle_dv].
+     */
+    public static function toInputName(string $path): string
+    {
+        $segments = explode('.', $path);
 
         return array_shift($segments) . implode('', array_map(fn (string $segment) => "[{$segment}]", $segments));
     }
@@ -120,7 +143,7 @@ abstract class Field extends Component
      */
     public function getId(): string
     {
-        return str_replace('.', '-', $this->name);
+        return str_replace('.', '-', $this->getStatePath());
     }
 
     /**
@@ -131,7 +154,7 @@ abstract class Field extends Component
         $primary = $this->primaryTranslatableInput();
 
         if ($primary !== null) {
-            return '#' . $primary->name;
+            return '#' . str_replace('.', '-', $primary->name);
         }
 
         return '#' . $this->getId();
@@ -139,7 +162,7 @@ abstract class Field extends Component
 
     public function getKey(): string
     {
-        return $this->key ?? $this->name;
+        return $this->key ?? $this->getStatePath();
     }
 
     public function getComponent(): ?string
@@ -423,8 +446,8 @@ abstract class Field extends Component
 
         data_set($state, $this->getStatePath(), $value);
 
-        foreach ($this->translatableValues($record, $value) as $name => $translation) {
-            $state[$name] = $this->normalizeState($translation);
+        foreach ($this->translatableValues($record, $value) as $path => $translation) {
+            data_set($state, $path, $this->normalizeState($translation));
         }
     }
 
@@ -445,10 +468,12 @@ abstract class Field extends Component
         }
 
         foreach ($inputs as $locale_input) {
-            $state[$locale_input->name] = $this->normalizeState($input[$locale_input->name] ?? null);
+            $value = $this->normalizeState(data_get($input, $locale_input->name));
+
+            data_set($state, $locale_input->name, $value);
 
             if ($locale_input->is_primary) {
-                data_set($state, $this->getStatePath(), $state[$locale_input->name]);
+                data_set($state, $this->getStatePath(), $value);
             }
         }
     }

@@ -126,6 +126,8 @@ export default function Edit({ form }: { form: StencilSchema }) {
 - Name `BelongsTo` selects by their foreign key (`category_id`) and `BelongsToMany` selects by the relationship (`tags`).
 - Every label, help text, heading and option goes through `__()`; `->thaana()` on fields that take Dhivehi.
 - Inside your own `<form>`: `->embedded()` (Blade) / `<StencilFields schema={form} />` (React).
+- Nest fields someone else defined under a key with `Group::make()->statePath('meta')->schema([...])`: names become `meta[subtitle]`, paths `meta.subtitle`.
+- A form is `Htmlable`, not `Stringable`: `{{ $form }}` or `$form->toHtml()`, never `(string) $form`. Pass it to components as `:form="$form"`.
 
 ## Common mistakes
 

@@ -10,7 +10,10 @@ import { Field } from "./field"
 /** One input of a translatable field, as javaabu/translatable serializes a LocaleInput. */
 export interface TranslatableInput {
   field: string
+  /** The input name, in bracket notation: `meta[subtitle_dv]`. */
   name: string
+  /** The state path, in dot notation: `meta.subtitle_dv`. */
+  statePath?: string
   locale: string
   direction: "ltr" | "rtl"
   thaana: boolean
@@ -27,7 +30,7 @@ export function translatableInputNode(node: StencilNode, input: TranslatableInpu
   props.lang = input.locale
   if (!input.primary) delete props.required
   if (input.thaana && (node.component === "Text" || node.component === "Textarea")) props.thaana = true
-  return { ...node, key: input.name, name: input.name, props, translatable: undefined }
+  return { ...node, key: input.statePath ?? input.name, name: input.name, props, translatable: undefined }
 }
 
 /**
@@ -55,7 +58,9 @@ export function TranslatableField({ node, renderChildren }: StencilComponentProp
     )
   }
 
-  const invalid = inputs.find((input) => errors && Object.keys(errors).some((key) => key === input.name))
+  const invalid = inputs.find(
+    (input) => errors && Object.keys(errors).some((key) => key === (input.statePath ?? input.name)),
+  )
 
   return (
     <Tabs

@@ -21,13 +21,12 @@ use Javaabu\Stencil\Http\LiveToken;
 use Javaabu\Stencil\Rendering\Node;
 use Javaabu\Stencil\Testing\AssertableForm;
 use JsonSerializable;
-use Stringable;
 
 /**
  * The root of a schema. Build one inline with Form::make()->schema([...]), or
  * extend it and return the components from definition().
  */
-class Form extends Component implements Arrayable, Htmlable, JsonSerializable, Stringable
+class Form extends Component implements Arrayable, Htmlable, JsonSerializable
 {
     protected string $type = 'form';
 
@@ -892,14 +891,14 @@ class Form extends Component implements Arrayable, Htmlable, JsonSerializable, S
         return AssertableForm::make($this);
     }
 
+    /**
+     * The form as HTML, with the Blade driver. Forms are Htmlable, so {{ $form }}
+     * renders them, but not Stringable: Blade would cast a Stringable object to a
+     * string whenever it's passed to a component attribute (:form="$form").
+     */
     public function toHtml(): string
     {
         return (string) $this->render('blade');
-    }
-
-    public function __toString(): string
-    {
-        return $this->toHtml();
     }
 
     /**

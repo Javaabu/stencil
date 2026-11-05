@@ -38,6 +38,21 @@ TextEntry::make('author')->value(fn (Article $record) => $record->author->name);
 
 `TextEntry` shows the field's state, or the record's attribute, or `value()`. Enums show their `getLabel()`.
 
+# Nesting state
+
+`statePath()` nests the state of the fields inside a component under a key, to put a group of fields someone else defined into your form:
+
+```php
+Group::make()->statePath('meta')->schema([
+    TextInput::make('subtitle')->maxLength(255),
+    Checkbox::make('featured'),
+]);
+```
+
+The fields get the state path `meta.subtitle`, the input name `meta[subtitle]` and the id `meta-subtitle`. They're filled from `data_get($record, 'meta.subtitle')`, validated as `meta.subtitle`, and returned from `validate()` as `['meta' => ['subtitle' => …, 'featured' => …]]`, which `fillModel()` and `save()` pass to the model's `meta` attribute. Paths nest: a section with `statePath('seo')` inside the group gives `meta.seo.title`. Find nested fields by their full path (`$form->getField('meta.subtitle')`), and use it in conditions (`visibleWhen('meta.featured', true)`).
+
+On a field, `statePath()` replaces the path its name gives: `TextInput::make('subtitle')->statePath('sub_title')`.
+
 # Columns
 
 `columns(2)` lays the components inside out in two columns from the `md` breakpoint (768px), one below it. Pass breakpoints for more control: `default`, `sm` (640px), `md`, `lg` (1024px), `xl` (1280px).

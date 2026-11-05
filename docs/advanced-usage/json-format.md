@@ -69,7 +69,7 @@ The `json` driver's output, version 1. It's what `$form->toArray()` and `json_en
 | `conditions` | Conditions to apply in the browser |
 | `live` | The field is live |
 | `span` | Grid columns taken, per breakpoint (`default`, `sm`, `md`, `lg`, `xl`), a number or `"full"` |
-| `translatable` | Translatable fields: `layout` and one input per locale (`field`, `name`, `locale`, `direction`, `thaana`, `primary`, `label`, `language`) |
+| `translatable` | Translatable fields: `layout` and one input per locale (`field`, `name` in bracket notation, `statePath` in dot notation, `locale`, `direction`, `thaana`, `primary`, `label`, `language`) |
 | `meta` | From `->meta()`, untouched |
 
 Optional keys are left out rather than `null`.

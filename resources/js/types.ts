@@ -60,6 +60,7 @@ export interface StencilNode {
     inputs: {
       field: string
       name: string
+      statePath?: string
       locale: string
       direction: "ltr" | "rtl"
       thaana: boolean

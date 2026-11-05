@@ -104,6 +104,8 @@ A form is `Htmlable`, so echo it:
 </x-layouts.admin>
 ```
 
+A form is `Htmlable` but not `Stringable`: echo it with `{{ $form }}`, and call `$form->toHtml()` (or `render()`) for a string, not `(string) $form`. This lets you pass a form to a Blade component (`<x-card :form="$form">`) as the form: Blade casts objects with `__toString()` to strings when they're passed to a class component's attributes, which would render the form there and could render it inside itself.
+
 It renders `<x-forms::form>` with your components inside, bound to the form's state, and the submit button. The page needs manifest's tags (`@manifestStyles` and `@manifestScripts`) or its automatic injection, as for any javaabu/forms page.
 
 ## Inertia React

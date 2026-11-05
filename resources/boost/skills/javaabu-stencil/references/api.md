@@ -20,7 +20,7 @@
 
 ## Every component
 
-`key()`, `columnSpan(2\|'full'\|[...])`, `columnSpanFull()`, `hidden()`, `visible()`, `hiddenOn()`, `visibleOn()`, `visibleWhen(field, values)`, `hiddenWhen()`, `enabledWhen()`, `disabledWhen()`, `visibleWhenChecked(checkbox)` (and hidden/enabled/disabled), `extraAttributes([...])`, `view('blade.view')`, `meta([...])`.
+`key()`, `statePath('meta')` (nests the fields inside; on a field, replaces its path), `columnSpan(2\|'full'\|[...])`, `columnSpanFull()`, `hidden()`, `visible()`, `hiddenOn()`, `visibleOn()`, `visibleWhen(field, values)`, `hiddenWhen()`, `enabledWhen()`, `disabledWhen()`, `visibleWhenChecked(checkbox)` (and hidden/enabled/disabled), `extraAttributes([...])`, `view('blade.view')`, `meta([...])`.
 
 ## Layout and display
 
