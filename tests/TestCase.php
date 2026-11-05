@@ -15,11 +15,13 @@ abstract class TestCase extends BaseTestCase
 {
     protected function getPackageProviders($app): array
     {
-        $optional = class_exists(TranslatableServiceProvider::class) ? [TranslatableServiceProvider::class] : [];
+        $optional = array_values(array_filter(
+            [HelpersServiceProvider::class, TranslatableServiceProvider::class],
+            fn (string $provider) => class_exists($provider),
+        ));
 
         return [
             ...$optional,
-            HelpersServiceProvider::class,
             ManifestServiceProvider::class,
             FormsServiceProvider::class,
             StencilServiceProvider::class,
