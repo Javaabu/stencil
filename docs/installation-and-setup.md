@@ -47,7 +47,7 @@ export default defineConfig({
 })
 ```
 
-Install what the renderer imports (`php artisan manifest:check` lists it, with the command for your package manager):
+Install what the renderer imports. `php artisan manifest:check` lists it, with the command for your package manager, once your `package.json` has `@inertiajs/react` (or with `--scope=pages`); Blade-only apps aren't asked for these:
 
 ```bash
 npm install github:Javaabu/react-forms#next-gen react react-dom

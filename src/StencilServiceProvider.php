@@ -31,12 +31,12 @@ class StencilServiceProvider extends ServiceProvider
             ->dist('../dist')
             ->style('styles', 'css/stencil.css')
             ->script('stencil', 'js/blade/stencil.ts', depends_on: ['forms::forms', 'stencil::styles'])
-            ->npm([
-                '@javaabu/forms' => 'github:Javaabu/react-forms#next-gen',
-            ], [
-                'react' => '^19.0',
-                'react-dom' => '^19.0',
-            ]));
+            ->npm(
+                ['@javaabu/forms' => 'github:Javaabu/react-forms#next-gen'],
+                peer_dependencies: ['react' => '^19.0', 'react-dom' => '^19.0'],
+                // Only the React renderer (imported through @javaabu/stencil) uses these; the Blade script imports none
+                for: 'pages',
+            ));
 
         $this->registerRouteMacro();
 

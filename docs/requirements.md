@@ -10,7 +10,7 @@ This package requires:
 - [javaabu/forms](https://github.com/Javaabu/forms) v2, for the Blade components (installed with stencil)
 - [javaabu/manifest](https://github.com/Javaabu/manifest), which ships stencil's CSS, JavaScript and React renderer to your app (installed with stencil)
 
-For Inertia React pages:
+For Inertia React pages (Blade apps need none of these, and `php artisan manifest:check` only asks for them when your app uses Inertia):
 
 - React 19
 - [@javaabu/forms](https://github.com/Javaabu/react-forms) and its peer dependencies (`php artisan manifest:check` lists what's missing)
