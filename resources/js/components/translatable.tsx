@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Tabs, useFormState } from "@javaabu/forms"
 
-import type { StencilComponentProps } from "../context"
+import { useStencil, type StencilComponentProps } from "../context"
 import type { StencilNode } from "../types"
 import { Field } from "./field"
 
@@ -34,8 +34,10 @@ export function translatableInputNode(node: StencilNode, input: TranslatableInpu
 }
 
 /**
- * A translatable field (javaabu/translatable): one `@javaabu/forms` field per
- * locale, in tabs or stacked. The tab of the first invalid input opens.
+ * A translatable field (javaabu/translatable): one input per locale, in tabs
+ * or stacked. The tab of the first invalid input opens. Each input renders with
+ * the component registered for the node's type (a package's `block-editor` or
+ * `mediapicker`), else as a `@javaabu/forms` field.
  * Register your own component as `translatable` to replace it.
  */
 export function TranslatableField({ node, renderChildren }: StencilComponentProps) {
@@ -44,10 +46,13 @@ export function TranslatableField({ node, renderChildren }: StencilComponentProp
     inputs?: TranslatableInput[]
   }
   const errors = useFormState()?.errors
+  const { components } = useStencil()
   const base = node.key.replace(/\./g, "-")
+  const registered = components[node.type]
+  const Input = registered && registered !== components.translatable ? registered : Field
 
   const fields = inputs.map((input) => (
-    <Field key={input.name} node={translatableInputNode(node, input)} renderChildren={renderChildren} />
+    <Input key={input.name} node={translatableInputNode(node, input)} renderChildren={renderChildren} />
   ))
 
   if (layout === "stacked" || inputs.length < 2) {

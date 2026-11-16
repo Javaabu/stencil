@@ -62,4 +62,43 @@ describe("translatable fields", () => {
     expect(screen.queryByRole("tab")).toBeNull()
     expect(screen.getByLabelText(/Title \(ދިވެހި\)/)).toHaveValue("މަރުޙަބާ")
   })
+
+  it("renders each locale with the component registered for the field's type", () => {
+    const Editor = ({ node }: { node: { name?: string; props?: Record<string, unknown> } }) => (
+      <div data-editor={node.name} dir={node.props?.dir as string} lang={node.props?.lang as string}>
+        {String(node.props?.label)}
+      </div>
+    )
+
+    const { container } = render(
+      <StencilForm
+        components={{ "block-editor": Editor }}
+        schema={{
+          ...schema("stacked"),
+          state: { content_en: null, content_dv: null },
+          components: [
+            {
+              type: "block-editor",
+              key: "content",
+              name: "content",
+              props: { label: "Content" },
+              translatable: {
+                layout: "stacked",
+                inputs: [
+                  { ...input("en", true, "Content (English)", "English"), field: "content", name: "content_en" },
+                  { ...input("dv", false, "Content (ދިވެހި)", "ދިވެހި"), field: "content", name: "content_dv" },
+                ],
+              },
+            },
+          ],
+        }}
+      />,
+    )
+
+    expect(container.querySelector('[data-editor="content_en"]')).toHaveTextContent("Content (English)")
+    const dhivehi = container.querySelector('[data-editor="content_dv"]')
+    expect(dhivehi).toHaveTextContent("Content (ދިވެހި)")
+    expect(dhivehi).toHaveAttribute("dir", "rtl")
+    expect(dhivehi).toHaveAttribute("lang", "dv")
+  })
 })
